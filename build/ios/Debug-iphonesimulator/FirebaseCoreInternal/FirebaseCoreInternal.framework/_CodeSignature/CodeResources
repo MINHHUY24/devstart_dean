@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		1fpaXw0vadvDRvOf5O3PSabHNCI=
+		uBSYp3ytWqG8uImnaTQY4dLFlCQ=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		rWRxSkMbJkQQtNgi/hEL31wIvcM=
+		wXiA5d52G9BLQIzh7l2R6NkCksE=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		4d4OqWXKSn/cwnlLRw3rBoVoyNc=
+		3ERWOswTn/6DokgXW/Q+fn1XD0c=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		JeazGrNvzEUZzb2o5UzLT9Z7os8=
+		7tA6ga0sTf1ynXDONC6iFRwHcT8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -95,14 +95,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ayCbYxARPi8eTxy48MYN5qe30/PGwi+i2rox3XcOZjQ=
+			HqgMABOilxe1rJFcldQ3sIqvRS0Fgl1ZcOVvyBre6vo=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			gsMBWsDoN7G+qpEPwGmftlS99fzvpIHt+LN4mtfivJk=
+			HVM5iK257OA/eoFYCmWjmQVHcdA9VQkoxNSKBzYtrSQ=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -123,7 +123,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			n9eFF3Dut/YfTpnKb9jlqj3PHbZvFCUIk+v+sCsxgj4=
+			eksf0LqgwdxwN8nU2e6U8TsgJqbKhnqvFM1KgqhvdCM=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -144,7 +144,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xFtBKw6TdyHpOS3oo64TQtJ8EYM0ANKS/zTrKtDZzT8=
+			ABm9D5l1yQ3PTvyJomS0gL+UvFwnPLndFrnGhtYaQRQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+import '../../login/controllers/login_controller.dart';
+import '../../mobile_layout/controllers/mobile_layout_controller.dart';
 
 class ProfileController extends GetxController {
   //TODO: Implement ProfileController
@@ -23,12 +28,29 @@ class ProfileController extends GetxController {
     Get.updateLocale(Locale(langCode));
   }
 
-  void logout() {
-    // Thực hiện xóa dữ liệu người dùng và điều hướng đến màn hình đăng nhập
-    // Ví dụ:
-    // await AuthService.logout();
-    Get.offAllNamed('/login');
+  static Future<void> logout() async {
+    try {
+      // Đăng xuất Google (nếu đã dùng Google để đăng nhập)
+      final googleSignIn = GoogleSignIn();
+      if (await googleSignIn.isSignedIn()) {
+        await googleSignIn.signOut();
+      }
+
+      // Đăng xuất Supabase
+      await Supabase.instance.client.auth.signOut();
+
+      // Xóa các controller liên quan (nếu muốn)
+      Get.delete<LoginController>();
+      Get.delete<ProfileController>();
+      Get.delete<MobileLayoutController>();
+
+      // Điều hướng về màn hình đăng nhập
+      Get.offAllNamed('/login');
+    } catch (e) {
+      print('Logout failed: $e');
+    }
   }
+
 
   @override
   void onInit() {
