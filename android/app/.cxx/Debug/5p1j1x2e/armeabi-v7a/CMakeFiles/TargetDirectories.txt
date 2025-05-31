@@ -1,0 +1,2 @@
+/Users/leminhhuy/Drive/doan/devstart/android/app/.cxx/Debug/5p1j1x2e/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/leminhhuy/Drive/doan/devstart/android/app/.cxx/Debug/5p1j1x2e/armeabi-v7a/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,62 @@
+import 'package:flutter/material.dart';
+
+class CustomSearchBar extends StatelessWidget {
+  final TextEditingController controller;
+  final VoidCallback onSearch;
+
+  const CustomSearchBar({
+    super.key,
+    required this.controller,
+    required this.onSearch,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.only(left: 40, right: 20),
+      decoration: BoxDecoration(
+        color: const Color(0xFF374156),
+        borderRadius: BorderRadius.circular(10),
+        border: Border(
+          top: BorderSide(color: Colors.tealAccent, width: 1),
+          left: BorderSide(color: Colors.tealAccent, width: 1),
+          right: BorderSide(color: Colors.tealAccent, width: 1),
+          bottom: BorderSide(color: Colors.tealAccent, width: 4),
+        ),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: controller,
+              onSubmitted: (_) => onSearch(),
+              style: const TextStyle(color: Colors.white),
+              decoration: const InputDecoration(
+                hintText: 'Search...',
+                hintStyle: TextStyle(color: Colors.white70),
+                border: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                fillColor: Colors.transparent,
+                filled: true,
+                isCollapsed: true,
+                contentPadding: EdgeInsets.symmetric(
+                  vertical: 12,
+                ), // Căn chỉnh đẹp
+              ),
+            ),
+          ),
+
+          GestureDetector(
+            onTap: onSearch,
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(Icons.search, color: Colors.tealAccent),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -1,0 +1,47 @@
+import 'package:devstart/theme/theme.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+import 'app/routes/app_pages.dart';
+import 'firebase_options.dart';
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  await Supabase.initialize(
+    url: 'https://kmwzwjwbkjvaghlkzpck.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imttd3p3andia2p2YWdobGt6cGNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0MDE0NjcsImV4cCI6MjA2Mzk3NzQ2N30.Z_F9_TqnKMIL-xyiqFT4QV25GVZqvujsRnKhPua_LVs',
+  );
+
+  runApp( MyApp()); // Nên thêm const
+}
+
+class MyApp extends StatelessWidget {
+  MyApp({super.key}); // Có const
+
+  final themeController = Get.put(ThemeController());
+  @override
+  Widget build(BuildContext context) {
+    return Obx(
+      () => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: myLightTheme,
+        darkTheme: myDarkTheme,
+        themeMode: themeController.themeMode,
+        initialRoute: AppPages.INITIAL,
+        getPages: AppPages.routes,
+      ),
+    );
+  }
+}
+
+

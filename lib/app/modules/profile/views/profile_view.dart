@@ -1,0 +1,236 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+import 'package:get/get.dart';
+
+import '../../../../theme/theme.dart';
+import '../controllers/profile_controller.dart';
+
+class ProfileView extends GetView<ProfileController> {
+   ProfileView({super.key});
+
+  Widget myItemWidget({
+    required BuildContext context,
+    required String title,
+    required IconData icon,
+    required VoidCallback onTap,
+    double? width, // cho phép truyền width bên ngoài, nếu null thì tự co giãn
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(10),
+      child: Ink(
+        width: width, // nếu null thì không cố định width
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Theme.of(context).inputDecorationTheme.fillColor,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              size: 25,
+              color: Theme.of(context).textTheme.labelLarge?.color,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+                color: Theme.of(context).textTheme.labelLarge?.color,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  final _themeController = Get.find<ThemeController>();
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        toolbarHeight: 65,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 12, right: 12, bottom: 10),
+          child: SvgPicture.network(
+            'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images/Group%2023.svg',
+            width: 55,
+            height: 55,
+          ),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            children: [
+              InkWell(
+                borderRadius: BorderRadius.circular(12), // để splash bo góc
+                onTap: () {
+                  // TODO: chuyển đến trang sửa thông tin cá nhân chẳng hạn
+                  print('Tapped profile info');
+                },
+                child: Ink(
+                  height: 80,
+                  width: double.infinity,
+                  padding: const EdgeInsets.only(left: 15, right: 20),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).inputDecorationTheme.fillColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 60,
+                        width: 60,
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundImage: NetworkImage(
+                            'https://avatar.iran.liara.run/public/28',
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(
+                            'Minh Huy',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                          subtitle: Text(
+                            '@gmail.com',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Icon(
+                        Icons.edit,
+                        color: Theme.of(context).textTheme.labelLarge?.color,
+                        size: 27,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+          SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              spacing: 17,
+              runSpacing: 12,
+              children: [
+                SizedBox(
+                  width: (MediaQuery.of(context).size.width - 40 - 17) / 2,
+                  child: myItemWidget(
+                    context: context,
+                    title: 'History',
+                    icon: Icons.history,
+                    onTap: () {},
+                  ),
+                ),
+                SizedBox(
+                  width: (MediaQuery.of(context).size.width - 40 - 5) / 2,
+                  child: myItemWidget(
+                    context: context,
+                    title: 'Achievement',
+                    icon: Icons.workspace_premium,
+                    onTap: () {},
+                  ),
+                ),
+                SizedBox(
+                  width: (MediaQuery.of(context).size.width - 40 - 17) / 2,
+                  child: myItemWidget(
+                    context: context,
+                    title: 'Notification',
+                    icon: Icons.notifications_outlined,
+                    onTap: () {},
+                  ),
+                ),
+                SizedBox(
+                  width: (MediaQuery.of(context).size.width - 40 - 5) / 2,
+                  child: myItemWidget(
+                    context: context,
+                    title: 'Language',
+                    icon: Icons.language_outlined,
+                    onTap: () {},
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+
+          const SizedBox(height: 20),
+
+              InkWell(
+                borderRadius: BorderRadius.circular(12),
+                onTap: () {
+                  controller.logout();
+                  print('Tapped logout');
+                },
+                child: Ink(
+                  height: 50,
+                  width: 150,
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.logout,
+                        color: Theme.of(context).textTheme.labelLarge?.color,
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        'Logout',
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w700,
+                          color: Theme.of(context).textTheme.bodyLarge?.color,
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ),
+              ),
+
+              ElevatedButton(
+                onPressed: () {
+                  _themeController.toggleTheme();  // Bấm là đổi theme
+                },
+                child: Text('Chuyển đổi giao diện'),
+              ),
+            ],
+          ),
+
+
+        ),
+      ),
+    );
+  }
+}
