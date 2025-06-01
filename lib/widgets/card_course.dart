@@ -7,14 +7,13 @@ class CardCourse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 90,
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
             child: Container(
-              margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: Theme.of(context).inputDecorationTheme.fillColor,
                 borderRadius: BorderRadius.circular(15),
@@ -29,8 +28,8 @@ class CardCourse extends StatelessWidget {
                     ),
                     child: Image.network(
                       'https://vtiacademy.edu.vn/upload/images/anh-link/muc-luong-full-stack-developer.png',
-                      height: 90,
-                      width: 90,
+                      height: 100,
+                      width: 100,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -45,10 +44,9 @@ class CardCourse extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
-                        // Đưa nội dung lên trên
                         children: [
                           Text(
-                            "Full Stack Developer",
+                            "Full-Stack Developer",
                             style: TextStyle(
                               color:
                                   Theme.of(context).textTheme.bodyLarge?.color,

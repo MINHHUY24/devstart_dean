@@ -90,12 +90,12 @@ final ThemeData myLightTheme = ThemeData(
 
   scaffoldBackgroundColor: const Color(0xFFFFFFFF),
 
-  primaryColor: const Color(0xFF00796B),
+  primaryColor: const Color(0xFF283244),
 
   appBarTheme: const AppBarTheme(
     backgroundColor: Color(0xFFF5F5F5),
     elevation: 0,
-    titleTextStyle: TextStyle(color: Colors.black, fontSize: 16),
+    titleTextStyle: TextStyle(color: Color(0xFF43D1BD), fontSize: 16),
     iconTheme: IconThemeData(color: Colors.black),
   ),
 
@@ -145,21 +145,9 @@ final ThemeData myLightTheme = ThemeData(
 
 
 class ThemeController extends GetxController {
-  final themeMode = ThemeMode.system.obs;
+  var themeMode = ThemeMode.system.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    loadThemeFromStorage();
-  }
-
-  void toggleTheme(bool isDark) async {
-    themeMode.value = isDark ? ThemeMode.dark : ThemeMode.light;
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('themeMode', isDark ? 'dark' : 'light');
-  }
-
-  Future<void> loadThemeFromStorage() async {
+  Future<void> loadTheme() async {
     final prefs = await SharedPreferences.getInstance();
     final savedTheme = prefs.getString('themeMode');
 
@@ -171,4 +159,11 @@ class ThemeController extends GetxController {
       themeMode.value = ThemeMode.system;
     }
   }
+
+  Future<void> toggleTheme(bool isDark) async {
+    themeMode.value = isDark ? ThemeMode.dark : ThemeMode.light;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('themeMode', isDark ? 'dark' : 'light');
+  }
 }
+
