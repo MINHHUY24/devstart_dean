@@ -12,6 +12,12 @@ class HistoryView extends GetView<HistoryController> {
       appBar: AppBar(
         title: const Text('HistoryView'),
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Get.back();
+          },
+        ),
       ),
       body: const Center(
         child: Text(

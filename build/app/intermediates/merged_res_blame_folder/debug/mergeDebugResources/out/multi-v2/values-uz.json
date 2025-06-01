@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.minghwidev.devstart.app-mergeDebugResources-44:/values-uz/values-uz.xml",
+            "outputFile": "com.minghwidev.devstart.app-mergeDebugResources-47:/values-uz/values-uz.xml",
             "map": [
                 {
                     "source": "/Users/leminhhuy/.gradle/caches/8.10.2/transforms/6fec79dfcef552889e3835cc7bab572a/transformed/preference-1.2.1/res/values-uz/values-uz.xml",
@@ -72,7 +72,7 @@
                     }
                 },
                 {
-                    "source": "/Users/leminhhuy/.gradle/caches/8.10.2/transforms/ee6aa5fd7f2304b1bbe5c05f658d5472/transformed/jetified-play-services-base-18.0.1/res/values-uz/values.xml",
+                    "source": "/Users/leminhhuy/.gradle/caches/8.10.2/transforms/eb80b7c20f86db896fc82173afcd18d6/transformed/jetified-play-services-base-18.1.0/res/values-uz/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

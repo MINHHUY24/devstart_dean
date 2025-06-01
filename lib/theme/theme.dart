@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Chủ đề giao diện tối (Dark Theme) được tuỳ chỉnh
 final ThemeData myDarkTheme = ThemeData(
@@ -144,11 +145,30 @@ final ThemeData myLightTheme = ThemeData(
 
 
 class ThemeController extends GetxController {
-  var isDarkMode = true.obs;
+  final themeMode = ThemeMode.system.obs;
 
-  ThemeMode get themeMode => isDarkMode.value ? ThemeMode.dark : ThemeMode.light;
+  @override
+  void onInit() {
+    super.onInit();
+    loadThemeFromStorage();
+  }
 
-  void toggleTheme() {
-    isDarkMode.value = !isDarkMode.value;
+  void toggleTheme(bool isDark) async {
+    themeMode.value = isDark ? ThemeMode.dark : ThemeMode.light;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('themeMode', isDark ? 'dark' : 'light');
+  }
+
+  Future<void> loadThemeFromStorage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedTheme = prefs.getString('themeMode');
+
+    if (savedTheme == 'dark') {
+      themeMode.value = ThemeMode.dark;
+    } else if (savedTheme == 'light') {
+      themeMode.value = ThemeMode.light;
+    } else {
+      themeMode.value = ThemeMode.system;
+    }
   }
 }

@@ -7,7 +7,7 @@ class CardCourse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 110,
+      height: 100,
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,9 +29,77 @@ class CardCourse extends StatelessWidget {
                     ),
                     child: Image.network(
                       'https://vtiacademy.edu.vn/upload/images/anh-link/muc-luong-full-stack-developer.png',
-                      height: 110,
-                      width: 120,
+                      height: 90,
+                      width: 90,
                       fit: BoxFit.cover,
+                    ),
+                  ),
+
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 5,
+                        left: 10,
+                        right: 10,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        // Đưa nội dung lên trên
+                        children: [
+                          Text(
+                            "Full Stack Developer",
+                            style: TextStyle(
+                              color:
+                                  Theme.of(context).textTheme.bodyLarge?.color,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 17,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          // Khoảng cách giữa tiêu đề và phụ đề
+                          Text(
+                            "Học lập trình từ A-Z",
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: Center(
+                      child: SizedBox(
+                        width: 70,
+                        height: 38,
+                        child: Material(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(5),
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(5),
+                            onTap: () {
+                              print('Play pressed');
+                            },
+                            child: Ink(
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).primaryColor,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  'Play',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],
