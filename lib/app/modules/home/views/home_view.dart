@@ -19,8 +19,10 @@ class HomeView extends GetView<HomeController> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.network(
-              'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images/Group%2023.svg',
+             SvgPicture.network(
+              Theme.of(context).brightness == Brightness.dark
+                  ? 'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images//Group%2023.svg'
+                  : 'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images//logo_light.svg',
               width: 55,
               height: 55,
             ),

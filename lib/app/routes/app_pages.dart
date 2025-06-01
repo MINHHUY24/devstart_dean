@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../modules/achievement/bindings/achievement_binding.dart';
+import '../modules/achievement/views/achievement_view.dart';
 import '../modules/courses/bindings/courses_binding.dart';
 import '../modules/courses/views/courses_view.dart';
 import '../modules/courses_detail/bindings/courses_detail_binding.dart';
@@ -11,12 +13,16 @@ import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/language/bindings/language_binding.dart';
+import '../modules/language/views/language_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/mobile_layout/bindings/mobile_layout_binding.dart';
 import '../modules/mobile_layout/views/mobile_layout_view.dart';
 import '../modules/multiple_choice_quiz/bindings/multiple_choice_quiz_binding.dart';
 import '../modules/multiple_choice_quiz/views/multiple_choice_quiz_view.dart';
+import '../modules/notification/bindings/notification_binding.dart';
+import '../modules/notification/views/notification_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 
@@ -65,6 +71,7 @@ class AppPages {
       name: _Paths.HISTORY,
       page: () => const HistoryView(),
       binding: HistoryBinding(),
+      // transition: Transition.cupertino,
     ),
     GetPage(
       name: _Paths.FILL_IN_THE_BLANKS,
@@ -75,6 +82,21 @@ class AppPages {
       name: _Paths.MULTIPLE_CHOICE_QUIZ,
       page: () => const MultipleChoiceQuizView(),
       binding: MultipleChoiceQuizBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTIFICATION,
+      page: () => const NotificationView(),
+      binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.ACHIEVEMENT,
+      page: () => const AchievementView(),
+      binding: AchievementBinding(),
+    ),
+    GetPage(
+      name: _Paths.LANGUAGE,
+      page: () => const LanguageView(),
+      binding: LanguageBinding(),
     ),
   ];
 }

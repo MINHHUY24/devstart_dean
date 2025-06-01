@@ -4,10 +4,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../theme/theme.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
-   ProfileView({super.key});
+  ProfileView({super.key});
 
   Widget myItemWidget({
     required BuildContext context,
@@ -50,8 +51,8 @@ class ProfileView extends GetView<ProfileController> {
     );
   }
 
-  final _themeController = Get.find<ThemeController>();
-
+  final themeController = Get.find<ThemeController>();
+  final profileController = Get.find<ProfileController>();
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,9 @@ class ProfileView extends GetView<ProfileController> {
         title: Padding(
           padding: const EdgeInsets.only(left: 12, right: 12, bottom: 10),
           child: SvgPicture.network(
-            'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images/Group%2023.svg',
+            Theme.of(context).brightness == Brightness.dark
+                ? 'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images//Group%2023.svg'
+                : 'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images//logo_light.svg',
             width: 55,
             height: 55,
           ),
@@ -74,114 +77,6 @@ class ProfileView extends GetView<ProfileController> {
         child: Center(
           child: Column(
             children: [
-              InkWell(
-                borderRadius: BorderRadius.circular(12), // để splash bo góc
-                onTap: () {
-                  // TODO: chuyển đến trang sửa thông tin cá nhân chẳng hạn
-                  print('Tapped profile info');
-                },
-                child: Ink(
-                  height: 80,
-                  width: double.infinity,
-                  padding: const EdgeInsets.only(left: 15, right: 20),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).inputDecorationTheme.fillColor,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: CircleAvatar(
-                          radius: 50,
-                          backgroundImage: NetworkImage(
-                            'https://avatar.iran.liara.run/public/28',
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          title: Text(
-                            'Minh Huy',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
-                          subtitle: Text(
-                            '@gmail.com',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Icon(
-                        Icons.edit,
-                        color: Theme.of(context).textTheme.labelLarge?.color,
-                        size: 27,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-          SizedBox(
-            width: double.infinity,
-            child: Wrap(
-              spacing: 17,
-              runSpacing: 12,
-              children: [
-                SizedBox(
-                  width: (MediaQuery.of(context).size.width - 40 - 17) / 2,
-                  child: myItemWidget(
-                    context: context,
-                    title: 'History',
-                    icon: Icons.history,
-                    onTap: () {},
-                  ),
-                ),
-                SizedBox(
-                  width: (MediaQuery.of(context).size.width - 40 - 5) / 2,
-                  child: myItemWidget(
-                    context: context,
-                    title: 'Achievement',
-                    icon: Icons.workspace_premium,
-                    onTap: () {},
-                  ),
-                ),
-                SizedBox(
-                  width: (MediaQuery.of(context).size.width - 40 - 17) / 2,
-                  child: myItemWidget(
-                    context: context,
-                    title: 'Notification',
-                    icon: Icons.notifications_outlined,
-                    onTap: () {},
-                  ),
-                ),
-                SizedBox(
-                  width: (MediaQuery.of(context).size.width - 40 - 5) / 2,
-                  child: myItemWidget(
-                    context: context,
-                    title: 'Language',
-                    icon: Icons.language_outlined,
-                    onTap: () {},
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-
-          const SizedBox(height: 20),
               InkWell(
                 borderRadius: BorderRadius.circular(12), // để splash bo góc
                 onTap: () {
@@ -200,52 +95,49 @@ class ProfileView extends GetView<ProfileController> {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: Text(
-                          controller.isDarkMode.value ? "Dark Mode" : "Light Mode",
-                          style: TextStyle(
-                            color: Theme.of(context).textTheme.bodyLarge?.color,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
+                      SizedBox(
+                        height: 50,
+                        width: 50,
+                        child: Obx(
+                          () => CircleAvatar(
+                            radius: 50,
+                            backgroundImage:
+                                profileController.userAvatar.value.isNotEmpty
+                                    ? NetworkImage(
+                                      profileController.userAvatar.value,
+                                    )
+                                    : NetworkImage(
+                                      'https://avatar.iran.liara.run/public/28',
+                                    ),
                           ),
                         ),
                       ),
-                      Obx(
-                            () => GestureDetector(
-                          onTap: controller.toggleTheme,
-                          child: Container(
-                            width: 60,
-                            height: 32,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color:
-                              controller.isDarkMode.value
-                                  ? Theme.of(context).primaryColor
-                                  : Colors.grey[400],
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Obx(
+                          () => ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            title: Text(
+                              profileController.userName.value.isNotEmpty
+                                  ? profileController.userName.value
+                                  : 'No name',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
                             ),
-                            child: Stack(
-                              children: [
-                                AnimatedAlign(
-                                  alignment:
-                                  controller.isDarkMode.value
-                                      ? Alignment.centerRight
-                                      : Alignment.centerLeft,
-                                  duration: const Duration(milliseconds: 200),
-                                  curve: Curves.easeInOut,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top:3, bottom: 3, left: 5, right: 5),
-                                    child: Container(
-                                      width: 24,
-                                      height: 24,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(20),
-
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            subtitle: Text(
+                              profileController.userEmail.value.isNotEmpty
+                                  ? profileController.userEmail.value
+                                  : 'No email',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey[600],
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
                             ),
                           ),
                         ),
@@ -254,6 +146,149 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 ),
               ),
+
+              const SizedBox(height: 20),
+
+              SizedBox(
+                width: double.infinity,
+                child: Wrap(
+                  spacing: 17,
+                  runSpacing: 12,
+                  children: [
+                    SizedBox(
+                      width: (MediaQuery.of(context).size.width - 40 - 17) / 2,
+                      child: myItemWidget(
+                        context: context,
+                        title: 'History',
+                        icon: Icons.history,
+                        onTap: () {
+                          Get.toNamed(Routes.HISTORY, arguments: null);
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: (MediaQuery.of(context).size.width - 40 - 5) / 2,
+                      child: myItemWidget(
+                        context: context,
+                        title: 'Achievement',
+                        icon: Icons.workspace_premium,
+                        onTap: () {
+                          Get.toNamed(Routes.ACHIEVEMENT);
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: (MediaQuery.of(context).size.width - 40 - 17) / 2,
+                      child: myItemWidget(
+                        context: context,
+                        title: 'Notification',
+                        icon: Icons.notifications_outlined,
+                        onTap: () {
+                          Get.toNamed(Routes.NOTIFICATION);
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: (MediaQuery.of(context).size.width - 40 - 5) / 2,
+                      child: myItemWidget(
+                        context: context,
+                        title: 'Language',
+                        icon: Icons.language_outlined,
+                        onTap: () {
+                          Get.toNamed(Routes.LANGUAGE);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // const SizedBox(height: 20),
+              // InkWell(
+              //   borderRadius: BorderRadius.circular(12), // để splash bo góc
+              //   onTap: () {
+              //     // TODO: chuyển đến trang sửa thông tin cá nhân chẳng hạn
+              //     print('Tapped profile info');
+              //   },
+              //   child: Ink(
+              //     height: 70,
+              //     width: double.infinity,
+              //     padding: const EdgeInsets.only(left: 15, right: 20),
+              //     decoration: BoxDecoration(
+              //       color: Theme.of(context).inputDecorationTheme.fillColor,
+              //       borderRadius: BorderRadius.circular(12),
+              //     ),
+              //     child: Row(
+              //       mainAxisSize: MainAxisSize.min,
+              //       mainAxisAlignment: MainAxisAlignment.start,
+              //       children: [
+              //         Expanded(
+              //           child: Text(
+              //             themeController.themeMode.value == ThemeMode.dark
+              //                 ? "Dark Mode"
+              //                 : "Light Mode",
+              //             style: TextStyle(
+              //               color: Theme.of(context).textTheme.bodyLarge?.color,
+              //               fontSize: 15,
+              //               fontWeight: FontWeight.bold,
+              //             ),
+              //           ),
+              //         ),
+              //         Obx(
+              //           () => GestureDetector(
+              //             onTap: () {
+              //               bool isDark =
+              //                   themeController.themeMode.value ==
+              //                   ThemeMode.dark;
+              //               themeController.toggleTheme(!isDark);
+              //             },
+              //             child: Container(
+              //               width: 60,
+              //               height: 32,
+              //               decoration: BoxDecoration(
+              //                 borderRadius: BorderRadius.circular(16),
+              //                 color:
+              //                     themeController.themeMode.value ==
+              //                             ThemeMode.dark
+              //                         ? Theme.of(context).primaryColor
+              //                         : Colors.grey[400],
+              //               ),
+              //               child: Stack(
+              //                 children: [
+              //                   AnimatedAlign(
+              //                     alignment:
+              //                         themeController.themeMode.value ==
+              //                                 ThemeMode.dark
+              //                             ? Alignment.centerRight
+              //                             : Alignment.centerLeft,
+              //                     duration: const Duration(milliseconds: 200),
+              //                     curve: Curves.easeInOut,
+              //                     child: Padding(
+              //                       padding: const EdgeInsets.only(
+              //                         top: 3,
+              //                         bottom: 3,
+              //                         left: 5,
+              //                         right: 5,
+              //                       ),
+              //                       child: Container(
+              //                         width: 24,
+              //                         height: 24,
+              //                         decoration: BoxDecoration(
+              //                           color: Colors.white,
+              //                           borderRadius: BorderRadius.circular(20),
+              //                         ),
+              //                       ),
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
 
               const SizedBox(height: 20),
 

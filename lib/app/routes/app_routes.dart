@@ -12,6 +12,9 @@ abstract class Routes {
   static const HISTORY = _Paths.HISTORY;
   static const FILL_IN_THE_BLANKS = _Paths.FILL_IN_THE_BLANKS;
   static const MULTIPLE_CHOICE_QUIZ = _Paths.MULTIPLE_CHOICE_QUIZ;
+  static const NOTIFICATION = _Paths.NOTIFICATION;
+  static const ACHIEVEMENT = _Paths.ACHIEVEMENT;
+  static const LANGUAGE = _Paths.LANGUAGE;
 }
 
 abstract class _Paths {
@@ -25,4 +28,7 @@ abstract class _Paths {
   static const HISTORY = '/history';
   static const FILL_IN_THE_BLANKS = '/fill-in-the-blanks';
   static const MULTIPLE_CHOICE_QUIZ = '/multiple-choice-quiz';
+  static const NOTIFICATION = '/notification';
+  static const ACHIEVEMENT = '/achievement';
+  static const LANGUAGE = '/language';
 }

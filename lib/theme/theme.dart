@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Chủ đề giao diện tối (Dark Theme) được tuỳ chỉnh
 final ThemeData myDarkTheme = ThemeData(
@@ -89,12 +90,12 @@ final ThemeData myLightTheme = ThemeData(
 
   scaffoldBackgroundColor: const Color(0xFFFFFFFF),
 
-  primaryColor: const Color(0xFF00796B),
+  primaryColor: const Color(0xFF283244),
 
   appBarTheme: const AppBarTheme(
     backgroundColor: Color(0xFFF5F5F5),
     elevation: 0,
-    titleTextStyle: TextStyle(color: Colors.black, fontSize: 16),
+    titleTextStyle: TextStyle(color: Color(0xFF43D1BD), fontSize: 16),
     iconTheme: IconThemeData(color: Colors.black),
   ),
 
@@ -144,11 +145,25 @@ final ThemeData myLightTheme = ThemeData(
 
 
 class ThemeController extends GetxController {
-  var isDarkMode = true.obs;
+  var themeMode = ThemeMode.system.obs;
 
-  ThemeMode get themeMode => isDarkMode.value ? ThemeMode.dark : ThemeMode.light;
+  Future<void> loadTheme() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedTheme = prefs.getString('themeMode');
 
-  void toggleTheme() {
-    isDarkMode.value = !isDarkMode.value;
+    if (savedTheme == 'dark') {
+      themeMode.value = ThemeMode.dark;
+    } else if (savedTheme == 'light') {
+      themeMode.value = ThemeMode.light;
+    } else {
+      themeMode.value = ThemeMode.dark;
+    }
+  }
+
+  Future<void> toggleTheme(bool isDark) async {
+    themeMode.value = isDark ? ThemeMode.dark : ThemeMode.light;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('themeMode', isDark ? 'dark' : 'light');
   }
 }
+

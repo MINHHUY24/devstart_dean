@@ -32,8 +32,13 @@ class CoursesView extends GetView<CoursesController> {
           ),
         ),
       ),
-      body: Center(
-        child: CardCourse(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            CardCourse(),
+          ],
+        ),
       ),
     );
   }

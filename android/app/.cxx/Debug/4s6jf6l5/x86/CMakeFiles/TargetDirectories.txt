@@ -1,0 +1,2 @@
+/Users/leminhhuy/Drive/DevStart/android/app/.cxx/Debug/4s6jf6l5/x86/CMakeFiles/edit_cache.dir
+/Users/leminhhuy/Drive/DevStart/android/app/.cxx/Debug/4s6jf6l5/x86/CMakeFiles/rebuild_cache.dir

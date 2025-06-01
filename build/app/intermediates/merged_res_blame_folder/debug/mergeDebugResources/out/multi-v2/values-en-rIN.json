@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.minghwidev.devstart.app-mergeDebugResources-44:/values-en-rIN/values-en-rIN.xml",
+            "outputFile": "com.minghwidev.devstart.app-mergeDebugResources-47:/values-en-rIN/values-en-rIN.xml",
             "map": [
                 {
                     "source": "/Users/leminhhuy/.gradle/caches/8.10.2/transforms/6fec79dfcef552889e3835cc7bab572a/transformed/preference-1.2.1/res/values-en-rIN/values-en-rIN.xml",
