@@ -182,20 +182,94 @@ class ProfileView extends GetView<ProfileController> {
 
 
           const SizedBox(height: 20),
+              InkWell(
+                borderRadius: BorderRadius.circular(12), // để splash bo góc
+                onTap: () {
+                  // TODO: chuyển đến trang sửa thông tin cá nhân chẳng hạn
+                  print('Tapped profile info');
+                },
+                child: Ink(
+                  height: 70,
+                  width: double.infinity,
+                  padding: const EdgeInsets.only(left: 15, right: 20),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).inputDecorationTheme.fillColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          controller.isDarkMode.value ? "Dark Mode" : "Light Mode",
+                          style: TextStyle(
+                            color: Theme.of(context).textTheme.bodyLarge?.color,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Obx(
+                            () => GestureDetector(
+                          onTap: controller.toggleTheme,
+                          child: Container(
+                            width: 60,
+                            height: 32,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              color:
+                              controller.isDarkMode.value
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.grey[400],
+                            ),
+                            child: Stack(
+                              children: [
+                                AnimatedAlign(
+                                  alignment:
+                                  controller.isDarkMode.value
+                                      ? Alignment.centerRight
+                                      : Alignment.centerLeft,
+                                  duration: const Duration(milliseconds: 200),
+                                  curve: Curves.easeInOut,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top:3, bottom: 3, left: 5, right: 5),
+                                    child: Container(
+                                      width: 24,
+                                      height: 24,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(20),
+
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
 
               InkWell(
                 borderRadius: BorderRadius.circular(12),
                 onTap: () {
-                  controller.logout();
+                  ProfileController.logout();
                   print('Tapped logout');
                 },
                 child: Ink(
-                  height: 50,
+                  height: 45,
                   width: 150,
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   decoration: BoxDecoration(
                     color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -213,22 +287,12 @@ class ProfileView extends GetView<ProfileController> {
                           color: Theme.of(context).textTheme.bodyLarge?.color,
                         ),
                       ),
-
                     ],
                   ),
                 ),
               ),
-
-              ElevatedButton(
-                onPressed: () {
-                  _themeController.toggleTheme();  // Bấm là đổi theme
-                },
-                child: Text('Chuyển đổi giao diện'),
-              ),
             ],
           ),
-
-
         ),
       ),
     );
