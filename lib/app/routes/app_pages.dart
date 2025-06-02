@@ -69,7 +69,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.HISTORY,
-      page: () => const HistoryView(),
+      page: () => HistoryView(),
       binding: HistoryBinding(),
       // transition: Transition.cupertino,
     ),
