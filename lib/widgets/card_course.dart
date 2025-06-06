@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../app/routes/app_pages.dart';
 
 class CardCourse extends StatelessWidget {
   const CardCourse({super.key});
@@ -77,6 +81,7 @@ class CardCourse extends StatelessWidget {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(5),
                             onTap: () {
+                              Get.toNamed(Routes.COURSES_DETAIL);
                               print('Play pressed');
                             },
                             child: Ink(

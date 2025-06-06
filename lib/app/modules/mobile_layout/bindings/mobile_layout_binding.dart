@@ -53,3 +53,4 @@ class MobileLayoutBinding extends Bindings {
 
   }
 }
+

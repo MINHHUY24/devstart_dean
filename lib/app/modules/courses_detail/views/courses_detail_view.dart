@@ -1,3 +1,4 @@
+import 'package:devstart/widgets/card_level_course.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -10,15 +11,25 @@ class CoursesDetailView extends GetView<CoursesDetailController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CoursesDetailView'),
+        title: Text('CoursesDetailView'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'CoursesDetailView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+
+        children: [
+         CardLevelCourse(
+           onPressed: (params) {
+             controller.fetchQuestions(
+               course: params['course'],
+               topic: params['topic'],
+               level: params['level'],
+               language: params['language'],
+             );
+           },
+         )
+        ],
+      )
     );
   }
 }
