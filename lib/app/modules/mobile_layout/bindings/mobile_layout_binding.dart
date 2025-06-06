@@ -3,6 +3,7 @@ import 'package:devstart/app/modules/courses/controllers/courses_controller.dart
 import 'package:devstart/app/modules/courses_detail/controllers/courses_detail_controller.dart';
 import 'package:devstart/app/modules/history/controllers/history_controller.dart';
 import 'package:devstart/app/modules/language/controllers/language_controller.dart';
+import 'package:devstart/app/modules/level/controllers/level_controller.dart';
 import 'package:devstart/app/modules/profile/controllers/profile_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -28,6 +29,10 @@ class MobileLayoutBinding extends Bindings {
 
     Get.lazyPut<CoursesDetailController>(
           () => CoursesDetailController(),
+    );
+
+    Get.lazyPut<LevelController>(
+          () => LevelController(),
     );
 
     Get.lazyPut<ProfileController>(

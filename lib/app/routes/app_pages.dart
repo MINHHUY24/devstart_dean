@@ -15,6 +15,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/language/bindings/language_binding.dart';
 import '../modules/language/views/language_view.dart';
+import '../modules/level/bindings/level_binding.dart';
+import '../modules/level/views/level_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/mobile_layout/bindings/mobile_layout_binding.dart';
@@ -64,7 +66,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.COURSES_DETAIL,
-      page: () => const CoursesDetailView(),
+      page: () => CoursesDetailView(),
       binding: CoursesDetailBinding(),
     ),
     GetPage(
@@ -97,6 +99,11 @@ class AppPages {
       name: _Paths.LANGUAGE,
       page: () => const LanguageView(),
       binding: LanguageBinding(),
+    ),
+    GetPage(
+      name: _Paths.LEVEL,
+      page: () => LevelView(),
+      binding: LevelBinding(),
     ),
   ];
 }

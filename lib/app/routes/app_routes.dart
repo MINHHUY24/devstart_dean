@@ -15,6 +15,7 @@ abstract class Routes {
   static const NOTIFICATION = _Paths.NOTIFICATION;
   static const ACHIEVEMENT = _Paths.ACHIEVEMENT;
   static const LANGUAGE = _Paths.LANGUAGE;
+  static const LEVEL = _Paths.LEVEL;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const NOTIFICATION = '/notification';
   static const ACHIEVEMENT = '/achievement';
   static const LANGUAGE = '/language';
+  static const LEVEL = '/level';
 }

@@ -1,3 +1,4 @@
+import 'package:devstart/models/course_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,7 +7,8 @@ import 'package:get/get_core/src/get_main.dart';
 import '../app/routes/app_pages.dart';
 
 class CardCourse extends StatelessWidget {
-  const CardCourse({super.key});
+  const CardCourse({super.key, required this.courseModel});
+  final CourseModel courseModel;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +33,9 @@ class CardCourse extends StatelessWidget {
                       bottomLeft: Radius.circular(15),
                     ),
                     child: Image.network(
-                      'https://vtiacademy.edu.vn/upload/images/anh-link/muc-luong-full-stack-developer.png',
+                      courseModel.imageUrl,
                       height: 100,
-                      width: 100,
+                      width: 90,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -42,7 +44,7 @@ class CardCourse extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(
                         top: 5,
-                        left: 10,
+                        left: 12,
                         right: 10,
                       ),
                       child: Column(
@@ -50,7 +52,7 @@ class CardCourse extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "Full-Stack Developer",
+                            courseModel.name,
                             style: TextStyle(
                               color:
                                   Theme.of(context).textTheme.bodyLarge?.color,
@@ -61,7 +63,7 @@ class CardCourse extends StatelessWidget {
                           const SizedBox(height: 4),
                           // Khoảng cách giữa tiêu đề và phụ đề
                           Text(
-                            "Học lập trình từ A-Z",
+                            courseModel.description,
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ],
@@ -81,7 +83,11 @@ class CardCourse extends StatelessWidget {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(5),
                             onTap: () {
-                              Get.toNamed(Routes.COURSES_DETAIL);
+                              Get.toNamed(
+                                // Routes.COURSES_DETAIL,
+                                Routes.LEVEL,
+                                arguments: courseModel, // truyền dữ liệu
+                              );
                               print('Play pressed');
                             },
                             child: Ink(

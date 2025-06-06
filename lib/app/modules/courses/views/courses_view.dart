@@ -32,14 +32,26 @@ class CoursesView extends GetView<CoursesController> {
           ),
         ),
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            CardCourse(),
-          ],
-        ),
+        child: Obx(() {
+          if (controller.courseList.isEmpty) {
+            return Center(child: Text('Không có khoá học nào'));
+          }
+          return ListView.builder(
+            itemCount: controller.courseList.length,
+            itemBuilder: (context, index) {
+              final course = controller.courseList[index];
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 15),
+                child: CardCourse(courseModel: course),
+              );
+            },
+          );
+        }),
       ),
+
     );
   }
 }

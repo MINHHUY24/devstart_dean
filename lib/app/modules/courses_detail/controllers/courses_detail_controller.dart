@@ -7,7 +7,6 @@ import 'dart:convert';
 class CoursesDetailController extends GetxController with StateMixin<List<QuestionsModel>> {
   //TODO: Implement CoursesDetailController
 
-  final count = 0.obs;
   final LessonsService _lessonsService = LessonsService();
 
   @override
@@ -63,5 +62,4 @@ class CoursesDetailController extends GetxController with StateMixin<List<Questi
     super.onClose();
   }
 
-  void increment() => count.value++;
 }
