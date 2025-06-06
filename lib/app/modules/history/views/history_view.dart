@@ -14,31 +14,44 @@ class HistoryView extends GetView<HistoryController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HistoryView', style: TextStyle(fontSize: 20)),
-        centerTitle: true,
+        backgroundColor: const Color(0xFF222B3A), // xanh đậm
+        elevation: 0,
+        toolbarHeight: 70,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Get.back();
-          },
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Get.back(),
+        ),
+        title: const Text(
+          'History',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 2, right: 2, top: 25),
-        child: Column(
-          children: [
-            Center(
-              child: CustomSearchBar(
-                controller: searchController,
-                onSearch: () {
-                  final query = searchController.text.trim();
-                  print('Searching for: $query');
-                  // controller.search(query); // nếu bạn có hàm search
-                },
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            child: CustomSearchBar(
+              controller: searchController,
+              onSearch: () {
+                final query = searchController.text.trim();
+                print('Searching for: $query');
+                // controller.search(query); // nếu bạn có hàm search
+              },
+            ),
+          ),
+          const Expanded(
+            child: Center(
+              child: Text(
+                'No course history yet.',
+                style: TextStyle(color: Colors.grey, fontSize: 16),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
