@@ -4,7 +4,7 @@
             "outputFile": "com.minghwidev.devstart.app-mergeDebugResources-47:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/leminhhuy/Drive/DevStart/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/leminhhuy/doan/devstart_new/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

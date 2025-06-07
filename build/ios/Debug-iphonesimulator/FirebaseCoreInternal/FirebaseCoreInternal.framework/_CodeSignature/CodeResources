@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		2OL/+6AZfYRWS+4KbgCEdsv+DN4=
+		i4iKD02w+TxOS7uUmrZKk8t9+8g=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		FElbFEauD1AAa1vV7ZBtjKV7NOY=
+		bxIvGeI2Zd/q24IGo12M233AE/E=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		QVpn87J2wAsAFLtlZQBW68i1/mE=
+		DjcUrRwSmWpC/qxVuUGouEXZAu8=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		s3HFKzfClJGub6dHrftNeIX8yXE=
+		9jBTX7v+Pkb920/k7guw+MO8abI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -95,14 +95,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zPId87USeqlx8WAT9kCy7QKVmaym4goie7LwlPAj5wQ=
+			uM3HVsMKvP+/lemij50O6f3Jz9eluzQ72caKTDL4sRQ=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			07BfatsV145uP48wOukokAAl4pIOuvdgZ1SXQ8gaS+g=
+			EtMuXy99t7PsIwTYjO7H18+RIafCivqEiR8m7Duf+ME=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -123,7 +123,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7/Qv2eW5xauD90mjYaFzeVAnLguphifCbYFxSP2u1II=
+			edxTXVUuGJVAoQGs9RcjthBx7aM0fduYBAWvZPlhfF0=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -144,7 +144,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yeAV2a2mHt/hRgEVzkS19NNFdUo1zVzS4bZcSbYfN+o=
+			YX/PeWtqLRR4T5j7Acz/MLwgsFDtAPHDKlpqQbf80vA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

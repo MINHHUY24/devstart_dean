@@ -2144,7 +2144,7 @@
             "outputFile": "com.minghwidev.devstart.app-debug-49:/values-night-v8_values-night-v8.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/leminhhuy/Drive/DevStart/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/leminhhuy/doan/devstart_new/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -4779,25 +4779,6 @@
             "outputFile": "com.minghwidev.devstart.app-debug-49:/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/leminhhuy/Drive/DevStart/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,818",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "476,982"
-                    },
-                    "to": {
-                        "startLines": "1538,1542",
-                        "startColumns": "4,4",
-                        "startOffsets": "98446,98627",
-                        "endLines": "1541,1544",
-                        "endColumns": "12,12",
-                        "endOffsets": "98622,98791"
-                    }
-                },
-                {
                     "source": "/Users/leminhhuy/.gradle/caches/8.10.2/transforms/1a36ee1e87beff061ef9f2c053c4f171/transformed/browser-1.8.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11",
@@ -4978,20 +4959,22 @@
                     }
                 },
                 {
-                    "source": "/Users/leminhhuy/Drive/DevStart/build/app/generated/res/google-services/debug/values/values.xml",
+                    "source": "/Users/leminhhuy/doan/devstart_new/android/app/src/main/res/values/styles.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,197,277,381,488,608,714",
-                        "endColumns": "141,79,103,106,119,105,74",
-                        "endOffsets": "192,272,376,483,603,709,784"
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,818",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "476,982"
                     },
                     "to": {
-                        "startLines": "428,434,435,436,437,438,443",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "27217,27713,27793,27897,28004,28124,28414",
-                        "endColumns": "141,79,103,106,119,105,74",
-                        "endOffsets": "27354,27788,27892,27999,28119,28225,28484"
+                        "startLines": "1538,1542",
+                        "startColumns": "4,4",
+                        "startOffsets": "98446,98627",
+                        "endLines": "1541,1544",
+                        "endColumns": "12,12",
+                        "endOffsets": "98622,98791"
                     }
                 },
                 {
@@ -5043,6 +5026,23 @@
                         "startOffsets": "21697",
                         "endColumns": "49",
                         "endOffsets": "21742"
+                    }
+                },
+                {
+                    "source": "/Users/leminhhuy/doan/devstart_new/build/app/generated/res/google-services/debug/values/values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,197,277,381,488,608,714",
+                        "endColumns": "141,79,103,106,119,105,74",
+                        "endOffsets": "192,272,376,483,603,709,784"
+                    },
+                    "to": {
+                        "startLines": "428,434,435,436,437,438,443",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "27217,27713,27793,27897,28004,28124,28414",
+                        "endColumns": "141,79,103,106,119,105,74",
+                        "endOffsets": "27354,27788,27892,27999,28119,28225,28484"
                     }
                 },
                 {

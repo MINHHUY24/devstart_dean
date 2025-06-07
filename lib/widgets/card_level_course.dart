@@ -1,3 +1,4 @@
+import 'package:devstart/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -13,6 +14,7 @@ class CardLevelCourse extends StatelessWidget {
   final int level;
   final bool isUnlocked;
   final ValueChanged<Map<String, dynamic>> onPressed;
+
   // Biến tĩnh để lưu message đang hiển thị, tránh show lại nếu giống nhau
   static String? _currentSnackbarMessage;
 
@@ -27,7 +29,8 @@ class CardLevelCourse extends StatelessWidget {
           onTap: () {
             if (isUnlocked) {
               // // Dùng Get.to để chuyển sang GameStartPage
-              // Get.to(() => GameStartPage(level: level));
+              Get.toNamed(Routes.PLAY_GAME);
+
 
               onPressed({
                 'course': "Full-Stack Developer",

@@ -13,8 +13,8 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->/Users/leminhhuy/Drive/DevStart/android/app/src/debug/AndroidManifest.xml:6:5-66
-15-->/Users/leminhhuy/Drive/DevStart/android/app/src/debug/AndroidManifest.xml:6:22-64
+15-->/Users/leminhhuy/doan/devstart_new/android/app/src/debug/AndroidManifest.xml:6:5-66
+15-->/Users/leminhhuy/doan/devstart_new/android/app/src/debug/AndroidManifest.xml:6:22-64
 16    <!--
 17     Required to query activities that can process text, see:
 18         https://developer.android.com/training/package-visibility and
@@ -23,34 +23,34 @@
 21         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
 22    -->
 23    <queries>
-23-->/Users/leminhhuy/Drive/DevStart/android/app/src/main/AndroidManifest.xml:39:5-44:15
+23-->/Users/leminhhuy/doan/devstart_new/android/app/src/main/AndroidManifest.xml:39:5-44:15
 24        <intent>
-24-->/Users/leminhhuy/Drive/DevStart/android/app/src/main/AndroidManifest.xml:40:9-43:18
+24-->/Users/leminhhuy/doan/devstart_new/android/app/src/main/AndroidManifest.xml:40:9-43:18
 25            <action android:name="android.intent.action.PROCESS_TEXT" />
-25-->/Users/leminhhuy/Drive/DevStart/android/app/src/main/AndroidManifest.xml:41:13-72
-25-->/Users/leminhhuy/Drive/DevStart/android/app/src/main/AndroidManifest.xml:41:21-70
+25-->/Users/leminhhuy/doan/devstart_new/android/app/src/main/AndroidManifest.xml:41:13-72
+25-->/Users/leminhhuy/doan/devstart_new/android/app/src/main/AndroidManifest.xml:41:21-70
 26
 27            <data android:mimeType="text/plain" />
-27-->/Users/leminhhuy/Drive/DevStart/android/app/src/main/AndroidManifest.xml:42:13-50
-27-->/Users/leminhhuy/Drive/DevStart/android/app/src/main/AndroidManifest.xml:42:19-48
+27-->/Users/leminhhuy/doan/devstart_new/android/app/src/main/AndroidManifest.xml:42:13-50
+27-->/Users/leminhhuy/doan/devstart_new/android/app/src/main/AndroidManifest.xml:42:19-48
 28        </intent>
 29    </queries>
 30
 31    <uses-permission android:name="android.permission.WAKE_LOCK" />
-31-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:8:5-68
-31-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:8:22-65
+31-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:8:5-68
+31-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:8:22-65
 32    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Permissions options for the `notification` group -->
-32-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:5-79
-32-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:22-76
+32-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:5-79
+32-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:22-76
 33    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-33-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:5-77
-33-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:22-74
+33-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:5-77
+33-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:22-74
 34    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 34-->[com.google.firebase:firebase-messaging:24.1.1] /Users/leminhhuy/.gradle/caches/8.10.2/transforms/f80248970efbd3bafd1721bfcda96536/transformed/jetified-firebase-messaging-24.1.1/AndroidManifest.xml:26:5-82
 34-->[com.google.firebase:firebase-messaging:24.1.1] /Users/leminhhuy/.gradle/caches/8.10.2/transforms/f80248970efbd3bafd1721bfcda96536/transformed/jetified-firebase-messaging-24.1.1/AndroidManifest.xml:26:22-79
 35    <uses-permission android:name="android.permission.VIBRATE" />
-35-->[:flutter_local_notifications] /Users/leminhhuy/Drive/DevStart/build/flutter_local_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7:5-66
-35-->[:flutter_local_notifications] /Users/leminhhuy/Drive/DevStart/build/flutter_local_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7:22-63
+35-->[:flutter_local_notifications] /Users/leminhhuy/doan/devstart_new/build/flutter_local_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7:5-66
+35-->[:flutter_local_notifications] /Users/leminhhuy/doan/devstart_new/build/flutter_local_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7:22-63
 36
 37    <permission
 37-->[androidx.core:core:1.13.1] /Users/leminhhuy/.gradle/caches/8.10.2/transforms/7f46bbd13206153774356ca6103aa890/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
@@ -106,63 +106,63 @@
 82            android:value="2" />
 83
 84        <service
-84-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:14:9-17:72
+84-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:14:9-17:72
 85            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService"
-85-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:15:13-107
+85-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:15:13-107
 86            android:exported="false"
-86-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:16:13-37
+86-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:16:13-37
 87            android:permission="android.permission.BIND_JOB_SERVICE" />
-87-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:17:13-69
+87-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:17:13-69
 88        <service
-88-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:18:9-24:19
+88-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:18:9-24:19
 89            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService"
-89-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:19:13-97
+89-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:19:13-97
 90            android:exported="false" >
-90-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:20:13-37
+90-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:20:13-37
 91            <intent-filter>
-91-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:21:13-23:29
+91-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:21:13-23:29
 92                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-92-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:17-78
-92-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:25-75
+92-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:17-78
+92-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:25-75
 93            </intent-filter>
 94        </service>
 95
 96        <receiver
-96-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:26:9-33:20
+96-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:26:9-33:20
 97            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver"
-97-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:27:13-98
+97-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:27:13-98
 98            android:exported="true"
-98-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:28:13-36
+98-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:28:13-36
 99            android:permission="com.google.android.c2dm.permission.SEND" >
-99-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:29:13-73
+99-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:29:13-73
 100            <intent-filter>
-100-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:30:13-32:29
+100-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:30:13-32:29
 101                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-101-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:31:17-81
-101-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:31:25-78
+101-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:31:17-81
+101-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:31:25-78
 102            </intent-filter>
 103        </receiver>
 104
 105        <service
-105-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:35:9-39:19
+105-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:35:9-39:19
 106            android:name="com.google.firebase.components.ComponentDiscoveryService"
-106-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:35:18-89
+106-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:35:18-89
 107            android:directBootAware="true"
 107-->[com.google.firebase:firebase-common:21.0.0] /Users/leminhhuy/.gradle/caches/8.10.2/transforms/ec4138de37aaf41c537b7e74e719439c/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:32:13-43
 108            android:exported="false" >
 108-->[com.google.firebase:firebase-messaging:24.1.1] /Users/leminhhuy/.gradle/caches/8.10.2/transforms/f80248970efbd3bafd1721bfcda96536/transformed/jetified-firebase-messaging-24.1.1/AndroidManifest.xml:56:13-37
 109            <meta-data
-109-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:36:13-38:85
+109-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:36:13-38:85
 110                android:name="com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar"
-110-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:37:17-128
+110-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:37:17-128
 111                android:value="com.google.firebase.components.ComponentRegistrar" />
-111-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:38:17-82
+111-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:38:17-82
 112            <meta-data
-112-->[:firebase_core] /Users/leminhhuy/Drive/DevStart/build/firebase_core/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:13-11:85
+112-->[:firebase_core] /Users/leminhhuy/doan/devstart_new/build/firebase_core/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:13-11:85
 113                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-113-->[:firebase_core] /Users/leminhhuy/Drive/DevStart/build/firebase_core/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:10:17-124
+113-->[:firebase_core] /Users/leminhhuy/doan/devstart_new/build/firebase_core/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:10:17-124
 114                android:value="com.google.firebase.components.ComponentRegistrar" />
-114-->[:firebase_core] /Users/leminhhuy/Drive/DevStart/build/firebase_core/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:17-82
+114-->[:firebase_core] /Users/leminhhuy/doan/devstart_new/build/firebase_core/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:17-82
 115            <meta-data
 115-->[com.google.firebase:firebase-messaging:24.1.1] /Users/leminhhuy/.gradle/caches/8.10.2/transforms/f80248970efbd3bafd1721bfcda96536/transformed/jetified-firebase-messaging-24.1.1/AndroidManifest.xml:57:13-59:85
 116                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
@@ -208,15 +208,15 @@
 136        </service>
 137
 138        <provider
-138-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:41:9-45:38
+138-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:41:9-45:38
 139            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
-139-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:42:13-102
+139-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:42:13-102
 140            android:authorities="com.minghwidev.devstart.flutterfirebasemessaginginitprovider"
-140-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:43:13-88
+140-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:43:13-88
 141            android:exported="false"
-141-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:44:13-37
+141-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:44:13-37
 142            android:initOrder="99" />
-142-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:45:13-35
+142-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:45:13-35
 143
 144        <receiver
 144-->[com.google.firebase:firebase-messaging:24.1.1] /Users/leminhhuy/.gradle/caches/8.10.2/transforms/f80248970efbd3bafd1721bfcda96536/transformed/jetified-firebase-messaging-24.1.1/AndroidManifest.xml:29:9-40:20
@@ -227,10 +227,10 @@
 147            android:permission="com.google.android.c2dm.permission.SEND" >
 147-->[com.google.firebase:firebase-messaging:24.1.1] /Users/leminhhuy/.gradle/caches/8.10.2/transforms/f80248970efbd3bafd1721bfcda96536/transformed/jetified-firebase-messaging-24.1.1/AndroidManifest.xml:32:13-73
 148            <intent-filter>
-148-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:30:13-32:29
+148-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:30:13-32:29
 149                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-149-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:31:17-81
-149-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:31:25-78
+149-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:31:17-81
+149-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:31:25-78
 150            </intent-filter>
 151
 152            <meta-data
@@ -253,21 +253,21 @@
 163            android:exported="false" >
 163-->[com.google.firebase:firebase-messaging:24.1.1] /Users/leminhhuy/.gradle/caches/8.10.2/transforms/f80248970efbd3bafd1721bfcda96536/transformed/jetified-firebase-messaging-24.1.1/AndroidManifest.xml:49:13-37
 164            <intent-filter android:priority="-500" >
-164-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:21:13-23:29
+164-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:21:13-23:29
 165                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-165-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:17-78
-165-->[:firebase_messaging] /Users/leminhhuy/Drive/DevStart/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:25-75
+165-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:17-78
+165-->[:firebase_messaging] /Users/leminhhuy/doan/devstart_new/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:25-75
 166            </intent-filter>
 167        </service>
 168
 169        <activity
-169-->[:url_launcher_android] /Users/leminhhuy/Drive/DevStart/build/url_launcher_android/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:8:9-11:74
+169-->[:url_launcher_android] /Users/leminhhuy/doan/devstart_new/build/url_launcher_android/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:8:9-11:74
 170            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-170-->[:url_launcher_android] /Users/leminhhuy/Drive/DevStart/build/url_launcher_android/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:13-74
+170-->[:url_launcher_android] /Users/leminhhuy/doan/devstart_new/build/url_launcher_android/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:13-74
 171            android:exported="false"
-171-->[:url_launcher_android] /Users/leminhhuy/Drive/DevStart/build/url_launcher_android/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:10:13-37
+171-->[:url_launcher_android] /Users/leminhhuy/doan/devstart_new/build/url_launcher_android/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:10:13-37
 172            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-172-->[:url_launcher_android] /Users/leminhhuy/Drive/DevStart/build/url_launcher_android/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:13-71
+172-->[:url_launcher_android] /Users/leminhhuy/doan/devstart_new/build/url_launcher_android/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:13-71
 173
 174        <uses-library
 174-->[androidx.window:window:1.2.0] /Users/leminhhuy/.gradle/caches/8.10.2/transforms/73db24a2829d8fb9cf5663cfbb96cfeb/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
