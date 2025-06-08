@@ -4,65 +4,85 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../models/course_model.dart';
 import '../../../../widgets/card_level_course.dart';
+import '../../playGame/controllers/play_game_controller.dart';
 import '../controllers/level_controller.dart';
 
-class LevelView extends GetView<LevelController> {
-  LevelView({super.key});
+class LevelView extends StatefulWidget {
+  LevelView({Key? key}) : super(key: key);
   final CourseModel courseModel = Get.arguments;
-  final LevelController controller = Get.put(LevelController());
 
   @override
-  Widget build(BuildContext context) {
-    // Lấy userId tự động từ Supabase Auth
+  State<LevelView> createState() => _LevelViewState();
+}
+
+class _LevelViewState extends State<LevelView> {
+  final LevelController controller = Get.find();
+
+  @override
+  void initState() {
+    super.initState();
+
     final user = Supabase.instance.client.auth.currentUser;
     final userId = user?.id;
 
-    if (userId != null) {
-      controller.fetchUnlockedLevel(
-        userId: userId,
-        courseName: courseModel.name,
-      );
-    } else {
-      // Nếu chưa đăng nhập, có thể show snackbar hoặc chuyển trang đăng nhập
-      WidgetsBinding.instance.addPostFrameCallback((_) {
+    // Chỉ gọi 1 lần duy nhất ở đây khi widget khởi tạo
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.setCourse(widget.courseModel.name);
+      if (userId != null && controller.unlockedLevel.value == 0) {
+        controller.fetchUnlockedLevel(
+            userId: userId, courseName: widget.courseModel.name);
+      } else if (userId == null) {
         Get.snackbar('Thông báo', 'Bạn cần đăng nhập để xem khóa học');
-        // Hoặc Get.offAllNamed('/login');
-      });
-    }
+      }
+    });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(courseModel.name, style: TextStyle(fontSize: 20)),
+        title: Text(
+            widget.courseModel.name, style: const TextStyle(fontSize: 20)),
         centerTitle: true,
       ),
-      body: ListView.builder(
-          padding: const EdgeInsets.only(top: 20, left: 16, right: 16),
+      body: Obx(() {
+        final unlocked = controller.unlockedLevel.value;
+        final course = controller.selectedCourse.value;
+        final topic = controller.selectedTopic.value;
+        print('Selected topic: $topic');
+
+
+        return ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) {
             final levelNum = index + 1;
-            final isUnlocked = levelNum <= controller.unlockedLevel.value;
+            final isUnlocked = levelNum <= unlocked;
 
             return CardLevelCourse(
               level: levelNum,
               isUnlocked: isUnlocked,
-              onPressed: (params) {
-                if (!isUnlocked) {
-                  Get.snackbar("Chưa mở khóa", "Hãy hoàn thành level trước");
-                  return;
+                onPressed: () {
+                  controller.setLevelAndTopic(levelNum);
+
+                  final course = controller.selectedCourse.value;
+                  final topic = controller.selectedTopic.value ?? '';
+
+                  print('Pressed level $levelNum with topic: $topic');
+
+                  // Không fetch ở đây nữa
+                  Get.toNamed('/play-game', arguments: {
+                    'course': course,
+                    'topic': topic,
+                    'level': levelNum,
+                  });
                 }
 
-                controller.fetchQuestions(
-                  course: params['course'],
-                  topic: params['topic'],
-                  level: params['level'],
-                  language: params['language'],
-                );
 
-                // TODO: Nếu muốn chuyển trang sau khi fetch, thêm tại đây
-              },
             );
           },
-        ),
+        );
+      })
+
     );
   }
 }

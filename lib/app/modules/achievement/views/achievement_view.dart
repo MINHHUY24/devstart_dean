@@ -1,3 +1,4 @@
+import 'package:devstart/widgets/score.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -14,10 +15,6 @@ class AchievementView extends GetView<AchievementController> {
         centerTitle: true,
       ),
       body: const Center(
-        child: Text(
-          'AchievementView is working',
-          style: TextStyle(fontSize: 20),
-        ),
       ),
     );
   }

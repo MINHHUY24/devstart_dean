@@ -13,12 +13,9 @@ class CardLevelCourse extends StatelessWidget {
 
   final int level;
   final bool isUnlocked;
-  final ValueChanged<Map<String, dynamic>> onPressed;
+  final VoidCallback onPressed;
 
-  // Biến tĩnh để lưu message đang hiển thị, tránh show lại nếu giống nhau
   static String? _currentSnackbarMessage;
-
-  // Biến cờ để biết snackbar đang hiển thị
   static bool _isSnackbarShowing = false;
 
   @override
@@ -28,16 +25,7 @@ class CardLevelCourse extends StatelessWidget {
         GestureDetector(
           onTap: () {
             if (isUnlocked) {
-              // // Dùng Get.to để chuyển sang GameStartPage
-              Get.toNamed(Routes.PLAY_GAME);
-
-
-              onPressed({
-                'course': "Full-Stack Developer",
-                'level': level,
-                'language': "Việt Nam",
-                'topic': "Design Pattern",
-              });
+              onPressed(); // Gọi callback (LevelView sẽ xử lý logic và điều hướng)
             } else {
               const message = 'Bạn chưa mở khóa level này';
 
@@ -49,14 +37,13 @@ class CardLevelCourse extends StatelessWidget {
                   'Thông báo',
                   message,
                   snackPosition: SnackPosition.TOP,
-                  backgroundColor: Color(0xFF374156),
+                  backgroundColor: const Color(0xFF374156),
                   colorText: Colors.white,
                   margin: const EdgeInsets.all(10),
                   borderRadius: 8,
                   duration: const Duration(milliseconds: 1500),
                 );
 
-                // Sau 3 giây (khi snackbar tự ẩn), reset cờ và message
                 Future.delayed(const Duration(milliseconds: 1500), () {
                   _isSnackbarShowing = false;
                   _currentSnackbarMessage = null;
@@ -71,22 +58,10 @@ class CardLevelCourse extends StatelessWidget {
               color: const Color(0xFF374156),
               borderRadius: BorderRadius.circular(10),
               border: Border(
-                top: BorderSide(
-                  color: Theme.of(context).primaryColor,
-                  width: 1,
-                ),
-                left: BorderSide(
-                  color: Theme.of(context).primaryColor,
-                  width: 1,
-                ),
-                right: BorderSide(
-                  color: Theme.of(context).primaryColor,
-                  width: 1,
-                ),
-                bottom: BorderSide(
-                  color: Theme.of(context).primaryColor,
-                  width: 4,
-                ),
+                top: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+                left: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+                right: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+                bottom: BorderSide(color: Theme.of(context).primaryColor, width: 4),
               ),
             ),
             child: Row(
@@ -116,3 +91,4 @@ class CardLevelCourse extends StatelessWidget {
     );
   }
 }
+

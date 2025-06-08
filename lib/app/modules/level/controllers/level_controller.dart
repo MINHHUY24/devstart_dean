@@ -7,52 +7,107 @@ import '../../../../models/Questions_model.dart';
 import '../../../services/lessons_service.dart';
 
 class LevelController extends GetxController with StateMixin<List<QuestionsModel>> {
-  //TODO: Implement LevelController
   final LessonsService _lessonsService = LessonsService();
-  final unlockedLevel = 1.obs; // Mặc định là level 1
+  final unlockedLevel = 1.obs;
+
+  final selectedCourse = ''.obs;
+  final selectedLevel = 1.obs;
+  final selectedTopic = RxnString(); // nullable string
+
 
 
   @override
   void onInit() {
     super.onInit();
-    print ('CoursesDetailController initialized');
+    print('LevelController initialized');
+
+    everAll([selectedCourse, selectedLevel, selectedTopic], (_) {
+      final course = selectedCourse.value;
+      final level = selectedLevel.value;
+      final topic = selectedTopic.value;
+
+      print('Selected course: $course');
+      print('Selected level: $level');
+      print('Selected topic: ${topic ?? 'null'}'); // Log rõ hơn
+
+      // Chỉ fetch khi course khác rỗng và topic khác null và khác rỗng
+      if (course.isNotEmpty && topic != null && topic.isNotEmpty) {
+        fetchQuestions(
+          course: course,
+          level: level,
+          topic: topic,
+          language: "Việt Nam",
+        );
+      } else {
+        // Nếu chưa đủ điều kiện fetch thì clear data
+        change(null, status: RxStatus.empty());
+      }
+    });
   }
 
-  Future<void> fetchQuestions({
-    String course = "Full-Stack Developer",
-    String topic = "Design Partern",
+  void setCourse(String course) {
+    selectedCourse.value = course;
+  }
+
+  void setLevel(int level) {
+    selectedLevel.value = level;
+  }
+
+  void setTopic(String? topic) {
+    selectedTopic.value = topic;
+  }
+
+  Future<bool> fetchQuestions({
+    required String course,
     int level = 1,
     String language = "Việt Nam",
+    String? topic,
   }) async {
-    print('Fetching questions for course: $course, topic: $topic, level: $level, language: $language');
+    if (course.isEmpty) {
+      change(null, status: RxStatus.error("Bạn chưa chọn khóa học"));
+      return false;
+    }
+
     change(null, status: RxStatus.loading());
+
+    final topicToSend = topic ?? "";
+
     try {
       final response = await _lessonsService.generateLessons(
         course: course,
-        topic: topic,
+        topic: topicToSend,
         level: level,
         language: language,
       );
-      print('Response status: ${response}');
-      final Map<String, dynamic> json = response.body is String
-          ? (response.body.isNotEmpty ? jsonDecode(response.body) : {})
-          : {};
-      final dynamic questionsJson = json['questions'];
-      if (questionsJson != null && questionsJson is List) {
-        final List<QuestionsModel> questions = questionsJson.map<QuestionsModel>((e) => QuestionsModel.fromJson(e)).toList();
-        print('Fetched questions:');
-        for (var q in questions) {
-          print(q.toJson());
-        }
-        change(questions, status: RxStatus.success());
-      } else {
-        change([], status: RxStatus.success());
-      }
 
+      final dynamic data = jsonDecode(response.body);
+
+      if (data is List) {
+        final List<QuestionsModel> questions =
+        data.map<QuestionsModel>((e) => QuestionsModel.fromJson(e)).toList();
+        change(questions, status: RxStatus.success());
+        return true;
+      } else if (data is Map && data.containsKey('error')) {
+        print('API trả về lỗi: ${data['error']}');
+        change(null, status: RxStatus.error(data['error']));
+        return false;
+      } else {
+        print('Dữ liệu trả về không đúng định dạng: $data');
+        change(null, status: RxStatus.error("Dữ liệu trả về không đúng định dạng"));
+        return false;
+      }
     } catch (e) {
       print('Error fetching questions: $e');
       change(null, status: RxStatus.error(e.toString()));
+      return false;
     }
+  }
+
+  void setLevelAndTopic(int level) {
+    selectedLevel.value = level;
+    final course = selectedCourse.value;
+    final topic = '$course-$level';
+    selectedTopic.value = topic;
   }
 
 
@@ -70,7 +125,6 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
           .maybeSingle();
 
       if (response == null) {
-        // Chưa có record, tạo mới
         await Supabase.instance.client.from('user_progress').insert({
           'user_id': userId,
           'course_name': courseName,
@@ -103,8 +157,6 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
     }
   }
 
-
-
   @override
   void onReady() {
     super.onReady();
@@ -114,5 +166,4 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
   void onClose() {
     super.onClose();
   }
-
 }

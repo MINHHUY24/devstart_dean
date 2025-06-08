@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
-import '../../../routes/app_pages.dart';
 import '../controllers/play_game_controller.dart';
 
 class PlayGameView extends GetView<PlayGameController> {
-  final Duration remainingTime = Duration(minutes: 5);
-  final double progress = 0.6; // Giá trị từ 0.0 đến 1.0
-
   PlayGameView({super.key});
+
+  final optionLabels = const ['A', 'B', 'C', 'D', 'E', 'F'];
 
   @override
   Widget build(BuildContext context) {
@@ -26,97 +23,79 @@ class PlayGameView extends GetView<PlayGameController> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Đồng hồ
-                  Material(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(5),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(5),
-                      onTap: () {
-                        print('Favorite pressed');
-                      },
-                      child: Ink(
-                        height: 40,
-                        width: 80,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF374156),
-                          borderRadius: BorderRadius.circular(5),
+                  // Time Display
+                  Obx(() {
+                    final int minutes = controller.remainingSeconds ~/ 60;
+                    final int seconds = controller.remainingSeconds % 60;
+
+                    final String timeStr =
+                        '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+
+                    return Container(
+                      height: 40,
+                      width: 80,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF374156),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Center(
+                        child: Text(
+                          timeStr,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 17,
+                          ),
                         ),
-                        child: const Center(
-                          child: Text(
-                            '10:10',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w800,
-                              fontSize: 17,
+                      ),
+                    );
+                  }),
+                  const SizedBox(width: 12),
+
+                  // Progress bar (theo thời gian)
+                  Expanded(
+                    child: Container(
+                      height: 20,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF374156), // màu nền (dark)
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Obx(() {
+                        double progress = (controller.remainingSeconds / 600.0).clamp(0.0, 1.0);
+                        return FractionallySizedBox(
+                          alignment: Alignment.centerLeft,  // Thanh thu hẹp từ phải sang trái
+                          widthFactor: progress,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF34D2C2), // màu xanh lá
+                              borderRadius: BorderRadius.circular(5),
                             ),
                           ),
-                        ),
-                      ),
+                        );
+                      }),
                     ),
                   ),
 
                   const SizedBox(width: 12),
 
-                  // Progress bar kéo dài
-                  Expanded(
-                    child: Material(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(5),
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(5),
-                        onTap: () {
-                          print('Progress bar tapped');
-                        },
-                        child: Ink(
-                          height: 20,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF374156),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Stack(
-                            children: [
-                              FractionallySizedBox(
-                                alignment: Alignment.centerLeft,
-                                widthFactor: 0.5,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFF34D2C2),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(width: 12),
-
-                  // Nút đóng
-                  Material(
-                    color: Colors.transparent,
+                  // Close button
+                  InkWell(
                     borderRadius: BorderRadius.circular(5),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(5),
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: Ink(
-                        height: 40,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF374156),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Center(
-                          child: Icon(
-                            Icons.close,
-                            color: Theme.of(context).primaryColor,
-                            size: 30,
-                          ),
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF374156),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          Icons.close,
+                          color: Theme.of(context).primaryColor,
+                          size: 30,
                         ),
                       ),
                     ),
@@ -127,6 +106,190 @@ class PlayGameView extends GetView<PlayGameController> {
           ),
         ),
       ),
+
+      body: Obx(() {
+        if (controller.questions.isEmpty) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        final currentIndex = controller.currentIndex.value;
+        final currentQuestion = controller.questions[currentIndex];
+
+        return Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Câu hỏi
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Câu ${currentIndex + 1}/${controller.questions.length}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+
+                      Text(
+                        currentQuestion.question,
+                        style: const TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+
+                      // Nếu là câu hỏi tự điền
+                      if (currentQuestion.type == 'fill') ...[
+                        TextField(
+                          controller: controller.textController,
+                          style: const TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            hintText: 'Nhập câu trả lời...',
+                            hintStyle: const TextStyle(color: Colors.grey),
+                            filled: true,
+                            fillColor: const Color(0xFF374156),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          textInputAction: TextInputAction.done,
+                          onSubmitted: (value) {
+                            final answer = value.trim();
+                            if (answer.isEmpty) return;
+                            controller.selectAnswer(answer);
+                            // Không chuyển câu, không clear text
+                          },
+                        ),
+                      ]
+
+
+                      // Nếu là câu hỏi trắc nghiệm
+                      else
+                        ...List.generate(
+                          currentQuestion.answerBlocks.length,
+                              (index) {
+                            final answer = currentQuestion.answerBlocks[index];
+                            final label = index < optionLabels.length
+                                ? optionLabels[index]
+                                : '${index + 1}';
+
+                            final selected = controller.selectedAnswers[currentIndex] == answer;
+
+                            return Container(
+                              margin: const EdgeInsets.symmetric(vertical: 8),
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 14,
+                                    horizontal: 28,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  backgroundColor: selected
+                                      ? Theme.of(context).primaryColor
+                                      : const Color(0xFF374156),
+                                  alignment: Alignment.centerLeft,
+                                ),
+                                onPressed: () {
+                                  controller.selectAnswer(answer);
+                                },
+                                child: Text(
+                                  '$label. $answer',
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                  textAlign: TextAlign.left,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+
+              // Nút điều hướng
+              Padding(
+                padding: const EdgeInsets.only(bottom: 60),
+                child: SizedBox(
+                  height: 45,
+                  child: Row(
+                    children: [
+                      // Back
+                      Expanded(
+                        child: InkWell(
+                          onTap: controller.currentIndex.value == 0
+                              ? null
+                              : controller.previousQuestion,
+
+                          borderRadius: BorderRadius.circular(5),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: controller.currentIndex.value == 0
+                                  ? Colors.grey
+                                  : Theme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Back',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 120),
+                      // Next
+                      Expanded(
+                        child: InkWell(
+                          onTap: controller.selectedAnswers.containsKey(controller.currentIndex.value)
+                              ? controller.nextQuestion
+                              : null,
+
+                          borderRadius: BorderRadius.circular(5),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Next',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

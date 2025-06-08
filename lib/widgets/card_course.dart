@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../app/modules/level/controllers/level_controller.dart';
 import '../app/routes/app_pages.dart';
 
 class CardCourse extends StatelessWidget {
@@ -83,13 +84,13 @@ class CardCourse extends StatelessWidget {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(5),
                             onTap: () {
-                              Get.toNamed(
-                                // Routes.COURSES_DETAIL,
-                                Routes.LEVEL,
-                                arguments: courseModel, // truyền dữ liệu
-                              );
-                              print('Play pressed');
+                              final levelController = Get.find<LevelController>();
+                              levelController.setCourse(courseModel.name);
+                              Get.toNamed(Routes.LEVEL, arguments: courseModel);
+
+
                             },
+
                             child: Ink(
                               decoration: BoxDecoration(
                                 color: Theme.of(context).primaryColor,
