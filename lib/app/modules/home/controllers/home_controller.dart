@@ -1,23 +1,25 @@
 import 'package:get/get.dart';
+import '../../../../models/course_model.dart';
+import '../../../services/course_service.dart';
 
-class HomeController extends GetxController {
-  //TODO: Implement HomeController
+class HomeController extends GetxController with StateMixin<List<CourseModel>> {
+  final RxList<CourseModel> courseList = <CourseModel>[].obs;
+  final courseService = CourseService();
 
-  final count = 0.obs;
+
   @override
   void onInit() {
     super.onInit();
+    fetchCourses();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  // Hàm gọi dữ liệu khóa học
+  Future<void> fetchCourses() async {
+    try {
+      final courses = await courseService.getCourses();
+      courseList.assignAll(courses);
+    } catch (e) {
+      print('Lỗi khi lấy danh sách khóa học: $e');
+    }
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
