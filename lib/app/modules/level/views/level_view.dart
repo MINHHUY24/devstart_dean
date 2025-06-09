@@ -28,12 +28,15 @@ class _LevelViewState extends State<LevelView> {
     // Chỉ gọi 1 lần duy nhất ở đây khi widget khởi tạo
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller.setCourse(widget.courseModel.name);
-      if (userId != null && controller.unlockedLevel.value == 0) {
+      if (userId != null) {
         controller.fetchUnlockedLevel(
-            userId: userId, courseName: widget.courseModel.name);
-      } else if (userId == null) {
+          userId: userId,
+          courseName: widget.courseModel.name,
+        );
+      } else {
         Get.snackbar('Thông báo', 'Bạn cần đăng nhập để xem khóa học');
       }
+
     });
   }
 

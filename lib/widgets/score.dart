@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../app/modules/level/controllers/level_controller.dart';
 import '../app/routes/app_pages.dart';
 import '../../../../models/Questions_model.dart';
 
@@ -19,6 +21,23 @@ class Score extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final levelController = Get.find<LevelController>();
+    final currentLevel = levelController.selectedLevel.value;
+    final course = levelController.selectedCourse.value;
+    final userId = Supabase.instance.client.auth.currentUser?.id;
+
+    // Nếu đạt đủ điểm, mở khóa level tiếp theo
+    if (userId != null && score >= (total * 0.6).round()) {
+      final nextLevel = currentLevel + 1;
+      levelController.unlockNextLevel(
+        userId: userId,
+        courseName: course,
+        newLevel: nextLevel,
+      ).then((_) {
+        // Gọi lại để cập nhật giao diện
+        levelController.fetchUnlockedLevel(userId: userId, courseName: course);
+      });
+    }
     return Scaffold(
       body: Center(
         child: Padding(

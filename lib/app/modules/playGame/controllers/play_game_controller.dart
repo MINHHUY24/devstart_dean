@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../../models/Questions_model.dart';
 import '../../../../widgets/score.dart';
 import '../../level/controllers/level_controller.dart';
@@ -12,6 +13,11 @@ class PlayGameController extends GetxController {
   final RxInt score = 0.obs;
   final TextEditingController textController = TextEditingController();
   final Rx<Duration> remainingTime = Rx(const Duration(minutes: 10));
+
+  final LevelController levelController = Get.find<LevelController>();
+
+
+
 
   int get remainingSeconds => remainingTime.value.inSeconds;
 
@@ -35,18 +41,42 @@ class PlayGameController extends GetxController {
     });
   }
 
-  void finishGame() {
+  void finishGame() async {
     _timer?.cancel();
 
+    final total = questions.length;
+    final currentScore = score.value;
+
+    final args = Get.arguments ?? {};
+    final course = args['course'] ?? 'Flutter Developer';
+    final level = args['level'] ?? 1;
+
+    final userId = Supabase.instance.client.auth.currentUser?.id;
+
+    if (userId != null && currentScore >= (total * 0.6).round()) {
+      final nextLevel = level + 1;
+
+      await levelController.unlockNextLevel(
+        userId: userId,
+        courseName: course,
+        newLevel: nextLevel,
+      );
+
+      // Optional: cập nhật level hiện tại trên UI nếu bạn cần
+      await levelController.fetchUnlockedLevel(userId: userId, courseName: course);
+    }
+
+    // Điều hướng đến màn hình kết quả
     Get.offAll(
-      () => Score(
-        score: score.value,
-        total: questions.length,
+          () => Score(
+        score: currentScore,
+        total: total,
         selectedAnswers: selectedAnswers,
         questions: questions,
       ),
     );
   }
+
 
   void nextQuestion() {
     if (questions.isEmpty) return;
@@ -113,29 +143,50 @@ class PlayGameController extends GetxController {
     _initGame();
   }
 
-  void _initGame() async {
-    final args = Get.arguments;
+  // void _initGame() async {
+  //   final args = Get.arguments;
+  //
+  //   final course = args['course'];
+  //   final topic = args['topic'];
+  //   final level = args['level'];
+  //
+  //   final levelController = Get.find<LevelController>();
+  //
+  //   final success = await levelController.fetchQuestions(
+  //     course: course,
+  //     topic: topic,
+  //     level: level,
+  //     language: 'Việt Nam',
+  //   );
+  //
+  //   if (success) {
+  //     setQuestions(levelController.state ?? []);
+  //   } else {
+  //     Get.snackbar('Lỗi', 'Không thể tải câu hỏi');
+  //     Get.back();
+  //   }
+  // }
 
-    final course = args['course'];
-    final topic = args['topic'];
-    final level = args['level'];
+  void _initGame() async {
+    final args = Get.arguments ?? {};
+
+    final course = args['course'] ?? 'Flutter Developer';
+    final topic = args['topic'] ?? 'Flutter Developer-1';
+    final level = args['level'] ?? 1;
 
     final levelController = Get.find<LevelController>();
 
-    final success = await levelController.fetchQuestions(
-      course: course,
-      topic: topic,
-      level: level,
-      language: 'Việt Nam',
-    );
+    // Gọi hàm mock để lấy dữ liệu mẫu test
+    final success = await levelController.fetchQuestionsMock();
 
     if (success) {
       setQuestions(levelController.state ?? []);
     } else {
-      Get.snackbar('Lỗi', 'Không thể tải câu hỏi');
+      Get.snackbar('Lỗi', 'Không thể tải câu hỏi mẫu');
       Get.back();
     }
   }
+
 
 
 

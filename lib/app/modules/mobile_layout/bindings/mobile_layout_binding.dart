@@ -31,9 +31,8 @@ class MobileLayoutBinding extends Bindings {
           () => CoursesDetailController(),
     );
 
-    Get.lazyPut<LevelController>(
-          () => LevelController(),
-    );
+    Get.put<LevelController>(LevelController(), permanent: true);
+
 
     Get.lazyPut<ProfileController>(
           () => ProfileController(),
