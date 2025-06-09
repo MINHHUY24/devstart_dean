@@ -55,34 +55,37 @@ class _LevelViewState extends State<LevelView> {
         print('Selected topic: $topic');
 
 
-        return ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            final levelNum = index + 1;
-            final isUnlocked = levelNum <= unlocked;
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              final levelNum = index + 1;
+              final isUnlocked = levelNum <= unlocked;
 
-            return CardLevelCourse(
-              level: levelNum,
-              isUnlocked: isUnlocked,
-                onPressed: () {
-                  controller.setLevelAndTopic(levelNum);
+              return CardLevelCourse(
+                level: levelNum,
+                isUnlocked: isUnlocked,
+                  onPressed: () {
+                    controller.setLevelAndTopic(levelNum);
 
-                  final course = controller.selectedCourse.value;
-                  final topic = controller.selectedTopic.value ?? '';
+                    final course = controller.selectedCourse.value;
+                    final topic = controller.selectedTopic.value ?? '';
 
-                  print('Pressed level $levelNum with topic: $topic');
+                    print('Pressed level $levelNum with topic: $topic');
 
-                  // Không fetch ở đây nữa
-                  Get.toNamed('/play-game', arguments: {
-                    'course': course,
-                    'topic': topic,
-                    'level': levelNum,
-                  });
-                }
+                    // Không fetch ở đây nữa
+                    Get.toNamed('/play-game', arguments: {
+                      'course': course,
+                      'topic': topic,
+                      'level': levelNum,
+                    });
+                  }
 
 
-            );
-          },
+              );
+            },
+          ),
         );
       })
 
