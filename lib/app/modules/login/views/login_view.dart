@@ -22,15 +22,15 @@ class LoginView extends GetView<LoginController> {
                   controller.isLoading.value
                       ? const CircularProgressIndicator()
                       : SvgPicture.network(
-                    Theme.of(context).brightness == Brightness.dark
-                        ? 'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images//Group%2023.svg'
-                        : 'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images//logo_light.svg',
-                    width: 150,
-                    height: 150,
-                    placeholderBuilder: (context) =>
-                    const CircularProgressIndicator(),
-                    semanticsLabel: 'DevStart Logo',
-                  ),
+                        Theme.of(context).brightness == Brightness.dark
+                            ? 'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images//Group%2023.svg'
+                            : 'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images//logo_light.svg',
+                        width: 150,
+                        height: 150,
+                        placeholderBuilder:
+                            (context) => const CircularProgressIndicator(),
+                        semanticsLabel: 'DevStart Logo',
+                      ),
                   const SizedBox(height: 150),
 
                   Text(
@@ -38,14 +38,20 @@ class LoginView extends GetView<LoginController> {
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
-                      color: Theme.of(context).appBarTheme.titleTextStyle?.color,
+                      color:
+                          Theme.of(context).appBarTheme.titleTextStyle?.color,
                     ),
                   ),
                   const SizedBox(height: 8),
 
                   Text(
                     "From ideas to action. From challenges to skills.",
-                    style: TextStyle(fontSize: 15, color: Theme.of(context).primaryColor)),
+                    style: TextStyle(
+                      fontSize: 13.5,
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   const SizedBox(height: 40),
 
                   ElevatedButton.icon(

@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		+CMxnJqmQ5yyPVCKR96ASj6QMJY=
+		M+g2vaVnd1pDBev8gCmjbvQFoXE=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		0KEnhDgUZpaNsFpvk+UYm8blVj0=
+		lCE/J4mkx+Q8u0KjH0ZaEIO11K0=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		DjcUrRwSmWpC/qxVuUGouEXZAu8=
+		9rtb7wRgxMRZCL2GtN6nPKZxwyI=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		9jBTX7v+Pkb920/k7guw+MO8abI=
+		nruBBv9T+ZHDP3wlrX14Aw/AAVg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -95,14 +95,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			u+IMytLtp8Lze5P9g0VpqBJzcu+tTAT0sd3qeUAjuaM=
+			Z1R4xbJ5cPGh3abGfkHmkErzViuckyaQAXRQjtYcfm4=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			D+FNHF6hXzwtaF3A5hFfmS7t/FsazNvlbdAxs67IYxg=
+			XJpE6C8viwhptLI2WdFeCI23ZT0sXeBpZ/BLyL8lDTQ=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -123,7 +123,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			edxTXVUuGJVAoQGs9RcjthBx7aM0fduYBAWvZPlhfF0=
+			Mkzal+5fz/71cBRGzhSJXWuiFB9u26GQrf/675QG0+A=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -144,7 +144,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YX/PeWtqLRR4T5j7Acz/MLwgsFDtAPHDKlpqQbf80vA=
+			d1RlesqxaBgLDluDh4vO3KTrVRGP+Nvh8v98LEAeJWs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
