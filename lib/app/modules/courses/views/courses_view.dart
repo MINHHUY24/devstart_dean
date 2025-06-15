@@ -34,7 +34,7 @@ class CoursesView extends GetView<CoursesController> {
       ),
 
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(top:16.0, left: 16, right: 16),
         child: Obx(() {
           if (controller.courseList.isEmpty) {
             return Center(child: Text('Không có khoá học nào'));
@@ -44,7 +44,7 @@ class CoursesView extends GetView<CoursesController> {
             itemBuilder: (context, index) {
               final course = controller.courseList[index];
               return Padding(
-                padding: const EdgeInsets.only(bottom: 15),
+                padding: const EdgeInsets.only(bottom: 8),
                 child: CardCourse(courseModel: course),
               );
             },

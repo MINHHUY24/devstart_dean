@@ -73,7 +73,7 @@ class ProfileView extends GetView<ProfileController> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(top:22.0, left: 16, right: 16),
         child: Center(
           child: Column(
             children: [

@@ -21,24 +21,25 @@ class CardCourseVertical extends StatelessWidget {
       },
       child: Container(
         width: 160, // Điều chỉnh nếu cần theo thiết kế
-        margin: const EdgeInsets.symmetric(horizontal: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 5),
         decoration: BoxDecoration(
           color: Theme.of(context).inputDecorationTheme.fillColor,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
               child: Image.network(
                 courseModel.imageUrl,
                 width: double.infinity,
-                height: 100,
+                height: 110,
                 fit: BoxFit.cover,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              padding: const EdgeInsets.only(top:10, left: 10, right: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

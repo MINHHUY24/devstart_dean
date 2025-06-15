@@ -15,7 +15,6 @@ class CardCourse extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 6),
-      // khoảng cách nhẹ giữa các card
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).inputDecorationTheme.fillColor,
@@ -38,7 +37,6 @@ class CardCourse extends StatelessWidget {
                   ),
                 ),
               ),
-
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(
@@ -73,10 +71,9 @@ class CardCourse extends StatelessWidget {
                   ),
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.only(right: 15),
-                child: Center( // Đây là điểm mấu chốt để căn giữa nút Play
+                child: Center(
                   child: SizedBox(
                     width: 70,
                     height: 38,
@@ -95,10 +92,12 @@ class CardCourse extends StatelessWidget {
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              'Play',
-                              style: TextStyle(
+                              courseModel.progress == 0
+                                  ? 'Play'
+                                  : '${courseModel.progress}%',
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 16,
@@ -114,7 +113,6 @@ class CardCourse extends StatelessWidget {
             ],
           ),
         ),
-
       ),
     );
   }

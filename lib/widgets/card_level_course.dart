@@ -1,7 +1,6 @@
-import 'package:devstart/app/routes/app_pages.dart';
+import 'package:devstart/widgets/playTurnController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class CardLevelCourse extends StatelessWidget {
   const CardLevelCourse({
@@ -9,46 +8,39 @@ class CardLevelCourse extends StatelessWidget {
     required this.level,
     required this.isUnlocked,
     required this.onPressed,
+    this.progress = 0, // thêm progress mặc định
   });
 
   final int level;
   final bool isUnlocked;
   final VoidCallback onPressed;
+  final int progress;
 
   static String? _currentSnackbarMessage;
   static bool _isSnackbarShowing = false;
 
   @override
   Widget build(BuildContext context) {
+    final playTurnController = Get.find<PlayTurnController>();
+
     return Column(
       children: [
         GestureDetector(
           onTap: () {
             if (isUnlocked) {
-              onPressed(); // Gọi callback (LevelView sẽ xử lý logic và điều hướng)
-            } else {
-              const message = 'Bạn chưa mở khóa level này';
+              if (playTurnController.currentTurns.value > 0) {
+                playTurnController.useTurn();
+                onPressed();
+              } else {
+                final time = playTurnController.timeUntilNextRestore;
+                final message = time == null
+                    ? 'Bạn đã hết lượt chơi. Vui lòng đợi để hồi lượt.'
+                    : 'Hết lượt. Lượt tiếp theo sau: ${time.inMinutes} phút';
 
-              if (!_isSnackbarShowing && _currentSnackbarMessage != message) {
-                _currentSnackbarMessage = message;
-                _isSnackbarShowing = true;
-
-                Get.snackbar(
-                  'Thông báo',
-                  message,
-                  snackPosition: SnackPosition.TOP,
-                  backgroundColor: const Color(0xFF374156),
-                  colorText: Colors.white,
-                  margin: const EdgeInsets.all(10),
-                  borderRadius: 8,
-                  duration: const Duration(milliseconds: 1500),
-                );
-
-                Future.delayed(const Duration(milliseconds: 1500), () {
-                  _isSnackbarShowing = false;
-                  _currentSnackbarMessage = null;
-                });
+                _showSnackbar(message, durationMs: 2000);
               }
+            } else {
+              _showSnackbar('Bạn chưa mở khóa level này', durationMs: 1500);
             }
           },
           child: Container(
@@ -67,7 +59,7 @@ class CardLevelCourse extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (isUnlocked)
+                if (isUnlocked) ...[
                   Text(
                     "Level $level",
                     style: TextStyle(
@@ -75,8 +67,9 @@ class CardLevelCourse extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       fontSize: 18,
                     ),
-                  )
-                else
+                  ),
+                  const SizedBox(width: 8),
+                ] else
                   Icon(
                     Icons.lock_outlined,
                     color: Theme.of(context).primaryColor,
@@ -90,5 +83,27 @@ class CardLevelCourse extends StatelessWidget {
       ],
     );
   }
-}
 
+  void _showSnackbar(String message, {int durationMs = 2000}) {
+    if (!_isSnackbarShowing || _currentSnackbarMessage != message) {
+      _currentSnackbarMessage = message;
+      _isSnackbarShowing = true;
+
+      Get.snackbar(
+        'Thông báo',
+        message,
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: const Color(0xFF374156),
+        colorText: Colors.white,
+        margin: const EdgeInsets.all(10),
+        borderRadius: 8,
+        duration: Duration(milliseconds: durationMs),
+      );
+
+      Future.delayed(Duration(milliseconds: durationMs), () {
+        _isSnackbarShowing = false;
+        _currentSnackbarMessage = null;
+      });
+    }
+  }
+}

@@ -74,11 +74,11 @@ class Score extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                "You scored $score out of $total",
+                "${(score / total * 10).toStringAsFixed(1)} points",
                 style: const TextStyle(
-                  fontSize: 17,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  fontWeight: FontWeight.w700,
                 ),
               ),
               const SizedBox(height: 30),

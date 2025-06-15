@@ -5,8 +5,6 @@ import '../modules/achievement/bindings/achievement_binding.dart';
 import '../modules/achievement/views/achievement_view.dart';
 import '../modules/courses/bindings/courses_binding.dart';
 import '../modules/courses/views/courses_view.dart';
-import '../modules/courses_detail/bindings/courses_detail_binding.dart';
-import '../modules/courses_detail/views/courses_detail_view.dart';
 import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -61,11 +59,6 @@ class AppPages {
       name: _Paths.MOBILE_LAYOUT,
       page: () => const MobileLayoutView(),
       binding: MobileLayoutBinding(),
-    ),
-    GetPage(
-      name: _Paths.COURSES_DETAIL,
-      page: () => CoursesDetailView(),
-      binding: CoursesDetailBinding(),
     ),
     GetPage(
       name: _Paths.HISTORY,
