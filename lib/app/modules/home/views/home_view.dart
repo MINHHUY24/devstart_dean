@@ -1,24 +1,69 @@
+import 'dart:async';
 import 'package:devstart/widgets/cardCourseVertical.dart';
-import 'package:devstart/widgets/courseProgressCard.dart';
+import 'package:devstart/widgets/card_course.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../../../widgets/playTurnController.dart';
 import '../controllers/home_controller.dart';
 
-class HomeView extends GetView<HomeController> {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  final HomeController controller = Get.find<HomeController>();
+  final PlayTurnController turnController = Get.find<PlayTurnController>();
+  final ScrollController _scrollController = ScrollController();
+  Timer? _scrollTimer;
+  double _scrollPosition = 0.0;
+  bool _userInteracting = false;
+  Timer? _resumeTimer;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Bắt đầu tự động cuộn
+    _scrollTimer = Timer.periodic(const Duration(seconds: 3), (_) {
+      if (_userInteracting) return; // Dừng nếu đang kéo
+
+      if (_scrollController.hasClients) {
+        final maxScroll = _scrollController.position.maxScrollExtent;
+        _scrollPosition += 172;
+
+        if (_scrollPosition > maxScroll) {
+          _scrollPosition = 0.0;
+        }
+
+        _scrollController.animateTo(
+          _scrollPosition,
+          duration: const Duration(milliseconds: 600),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollTimer?.cancel();
+    _resumeTimer?.cancel();
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-
-    final turnController = Get.find<PlayTurnController>();
-
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         toolbarHeight: 70,
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+
         // title: Row(
         //   mainAxisSize: MainAxisSize.min,
         //   crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,7 +107,6 @@ class HomeView extends GetView<HomeController> {
         //   ],
         // ),
 
-
         // title: Row(
         //   mainAxisSize: MainAxisSize.min,
         //   crossAxisAlignment: CrossAxisAlignment.center,
@@ -97,7 +141,6 @@ class HomeView extends GetView<HomeController> {
         //     // _buildIconButton(context, Icons.notifications_outlined),
         //   ],
         // ),
-
         title: Padding(
           padding: const EdgeInsets.only(left: 12, right: 12, bottom: 10),
           child: SvgPicture.network(
@@ -108,8 +151,6 @@ class HomeView extends GetView<HomeController> {
             height: 60,
           ),
         ),
-
-
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
@@ -130,23 +171,49 @@ class HomeView extends GetView<HomeController> {
                 if (controller.courseList.isEmpty) {
                   return const SizedBox(
                     height: 200,
-                    child: Center(child: Text('No courses found', style: TextStyle(color: Colors.white70))),
+                    child: Center(
+                      child: Text(
+                        'No courses found',
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                    ),
                   );
                 }
                 return SizedBox(
                   height: 200,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: controller.courseList.length,
-                    itemBuilder: (context, index) {
-                      final course = controller.courseList[index];
-                      return CardCourseVertical(courseModel: course);
+                  child: NotificationListener<ScrollNotification>(
+                    onNotification: (notification) {
+                      if (notification is UserScrollNotification ||
+                          notification is ScrollStartNotification) {
+                        _userInteracting = true;
+
+                        // Cập nhật lại vị trí hiện tại khi người dùng kéo
+                        _scrollPosition = _scrollController.offset;
+
+                        _resumeTimer?.cancel();
+                        _resumeTimer = Timer(const Duration(seconds: 2), () {
+                          _userInteracting = false;
+                        });
+                      }
+                      return false;
                     },
-                    separatorBuilder: (context, index) => const SizedBox(width: 12),
+                    child: ListView.separated(
+                      controller: _scrollController,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: controller.courseList.length,
+                      itemBuilder: (context, index) {
+                        final course = controller.courseList[index];
+                        return SizedBox(
+                          width: 160,
+                          child: CardCourseVertical(courseModel: course),
+                        );
+                      },
+                      separatorBuilder:
+                          (context, index) => const SizedBox(width: 12),
+                    ),
                   ),
                 );
               }),
-
               const SizedBox(height: 16),
               const Text(
                 'Resume Your Last Lesson',
@@ -158,7 +225,17 @@ class HomeView extends GetView<HomeController> {
               ),
               const SizedBox(height: 8),
               Obx(() {
-                if (controller.playedCourses.isEmpty) {
+                final progressedCourses =
+                    controller.playedCourses
+                        .where(
+                          (course) =>
+                              course.progress != null &&
+                              course.progress > 0 &&
+                              course.progress < 100,
+                        )
+                        .toList();
+
+                if (progressedCourses.isEmpty) {
                   return const Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Text(
@@ -171,14 +248,15 @@ class HomeView extends GetView<HomeController> {
                 return ListView.separated(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: controller.playedCourses.length,
+                  itemCount: progressedCourses.length,
                   itemBuilder: (context, index) {
-                    final course = controller.playedCourses[index];
-                    return CourseProgressCard(course: course);
+                    final course = progressedCourses[index];
+                    return CardCourse(courseModel: course);
                   },
-                  separatorBuilder: (context, index) => const SizedBox(height: 12),
+                  separatorBuilder:
+                      (context, index) => const SizedBox(height: 12),
                 );
-              })
+              }),
             ],
           ),
         ),
@@ -186,7 +264,12 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Widget _buildStatButton(BuildContext context, IconData icon, String label, Color iconColor) {
+  Widget _buildStatButton(
+    BuildContext context,
+    IconData icon,
+    String label,
+    Color iconColor,
+  ) {
     return Flexible(
       child: Material(
         color: Colors.transparent,
@@ -237,9 +320,7 @@ class HomeView extends GetView<HomeController> {
             color: const Color(0xFF374156),
             borderRadius: BorderRadius.circular(5),
           ),
-          child: Center(
-            child: Icon(icon, color: Colors.white),
-          ),
+          child: Center(child: Icon(icon, color: Colors.white)),
         ),
       ),
     );

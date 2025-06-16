@@ -1,6 +1,7 @@
 import 'package:devstart/models/course_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../app/modules/level/controllers/level_controller.dart';
 import '../app/routes/app_pages.dart';
@@ -12,6 +13,9 @@ class CardCourse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final bool isStarted = courseModel.progress > 0;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 6),
@@ -71,36 +75,36 @@ class CardCourse extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 15),
-                child: Center(
-                  child: SizedBox(
-                    width: 70,
-                    height: 38,
-                    child: Material(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(5),
-                      child: InkWell(
+              if (!isStarted)
+                Padding(
+                  padding: const EdgeInsets.only(right: 15),
+                  child: Center(
+                    child: SizedBox(
+                      width: 70,
+                      height: 38,
+                      child: Material(
+                        color: Colors.transparent,
                         borderRadius: BorderRadius.circular(5),
-                        onTap: () {
-                          final levelController = Get.find<LevelController>();
-                          levelController.setCourse(courseModel.name);
-                          Get.toNamed(Routes.LEVEL, arguments: courseModel);
-                        },
-                        child: Ink(
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Center(
-                            child: Text(
-                              courseModel.progress == 0
-                                  ? 'Play'
-                                  : '${courseModel.progress}%',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(5),
+                          onTap: () {
+                            final levelController = Get.find<LevelController>();
+                            levelController.setCourse(courseModel.name);
+                            Get.toNamed(Routes.LEVEL, arguments: courseModel);
+                          },
+                          child: Ink(
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Play',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
                           ),
@@ -108,8 +112,40 @@ class CardCourse extends StatelessWidget {
                       ),
                     ),
                   ),
+                )
+
+// ✅ Nếu đã học: CircularPercentIndicator có onTap
+              else
+                Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: Center(
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(30),
+                      onTap: () {
+                        final levelController = Get.find<LevelController>();
+                        levelController.setCourse(courseModel.name);
+                        Get.toNamed(Routes.LEVEL, arguments: courseModel);
+                      },
+                      child: CircularPercentIndicator(
+                        radius: 29.0,
+                        lineWidth: 5.0,
+                        percent: courseModel.progress / 100.0,
+                        center: Text(
+                          "${courseModel.progress}%",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        progressColor: Theme.of(context).primaryColor,
+                        backgroundColor: Colors.grey[700]!,
+                        circularStrokeCap: CircularStrokeCap.round,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+
             ],
           ),
         ),

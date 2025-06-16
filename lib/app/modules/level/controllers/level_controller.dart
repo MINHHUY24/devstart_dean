@@ -14,6 +14,8 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
   final selectedLevel = 1.obs;
   final selectedTopic = RxnString(); // nullable string
   final completedLevels = <int, bool>{}.obs;
+  final isLoading = true.obs;
+
 
   @override
   void onInit() {
@@ -48,8 +50,6 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
 
   // Hàm lấy dữ liệu mẫu để test
   Future<bool> fetchQuestionsMock() async {
-    await Future.delayed(Duration(seconds: 1)); // Giả lập delay
-
     final sampleData = [
       {
         "question": "Flutter là gì?",
@@ -159,6 +159,8 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
     required String userId,
     required String courseName,
   }) async {
+
+    isLoading.value = true;
     try {
       final response = await Supabase.instance.client
           .from('user_progress')
@@ -179,6 +181,8 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
       }
     } catch (e) {
       print('Lỗi khi fetch unlocked level: $e');
+    } finally{
+      isLoading.value = false;
     }
   }
 

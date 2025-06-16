@@ -19,10 +19,10 @@ class CustomSearchBar extends StatelessWidget {
         color: const Color(0xFF374156),
         borderRadius: BorderRadius.circular(10),
         border: Border(
-          top: BorderSide(color: Colors.tealAccent, width: 1),
-          left: BorderSide(color: Colors.tealAccent, width: 1),
-          right: BorderSide(color: Colors.tealAccent, width: 1),
-          bottom: BorderSide(color: Colors.tealAccent, width: 4),
+          top: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+          left: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+          right: BorderSide(color: Theme.of(context).primaryColor, width: 1),
+          bottom: BorderSide(color: Theme.of(context).primaryColor, width: 4),
         ),
       ),
       child: Row(

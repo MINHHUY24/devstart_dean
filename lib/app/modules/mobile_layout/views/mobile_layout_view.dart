@@ -100,12 +100,12 @@ class MobileLayoutView extends GetView<MobileLayoutController> {
                             ),
                           ),
                           child: const Icon(
-                            Icons.account_circle_outlined,
+                            Icons.settings_outlined,
                             color: Colors.white,
                           ),
                         )
-                        : const Icon(Icons.account_circle_outlined),
-                label: 'Profile',
+                        : const Icon(Icons.settings_outlined),
+                label: 'Settings',
               ),
             ],
           ),

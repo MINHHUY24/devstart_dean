@@ -36,7 +36,6 @@ class _LevelViewState extends State<LevelView> {
       } else {
         Get.snackbar('Thông báo', 'Bạn cần đăng nhập để xem khóa học');
       }
-
     });
   }
 
@@ -45,15 +44,25 @@ class _LevelViewState extends State<LevelView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            widget.courseModel.name, style: const TextStyle(fontSize: 20)),
+          widget.courseModel.name,
+          style: const TextStyle(fontSize: 20),
+        ),
         centerTitle: true,
       ),
       body: Obx(() {
+        if (controller.isLoading.value) {
+          return Center(
+            child: CircularProgressIndicator(
+              color: Theme.of(context).primaryColor,
+            ),
+
+          );
+        }
+
         final unlocked = controller.unlockedLevel.value;
         final course = controller.selectedCourse.value;
         final topic = controller.selectedTopic.value;
         print('Selected topic: $topic');
-
 
         return Padding(
           padding: const EdgeInsets.all(16.0),
@@ -66,29 +75,28 @@ class _LevelViewState extends State<LevelView> {
               return CardLevelCourse(
                 level: levelNum,
                 isUnlocked: isUnlocked,
-                  onPressed: () {
-                    controller.setLevelAndTopic(levelNum);
+                onPressed: () {
+                  controller.setLevelAndTopic(levelNum);
 
-                    final course = controller.selectedCourse.value;
-                    final topic = controller.selectedTopic.value ?? '';
+                  final course = controller.selectedCourse.value;
+                  final topic = controller.selectedTopic.value ?? '';
 
-                    print('Pressed level $levelNum with topic: $topic');
+                  print('Pressed level $levelNum with topic: $topic');
 
-                    // Không fetch ở đây nữa
-                    Get.toNamed('/play-game', arguments: {
+                  Get.toNamed(
+                    '/play-game',
+                    arguments: {
                       'course': course,
                       'topic': topic,
                       'level': levelNum,
-                    });
-                  }
-
-
+                    },
+                  );
+                },
               );
             },
           ),
         );
-      })
-
+      }),
     );
   }
 }

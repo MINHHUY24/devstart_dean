@@ -24,7 +24,10 @@ class ProfileView extends GetView<ProfileController> {
         width: width, // nếu null thì không cố định width
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Theme.of(context).inputDecorationTheme.fillColor,
+          color: Theme
+              .of(context)
+              .inputDecorationTheme
+              .fillColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -34,7 +37,11 @@ class ProfileView extends GetView<ProfileController> {
             Icon(
               icon,
               size: 25,
-              color: Theme.of(context).textTheme.labelLarge?.color,
+              color: Theme
+                  .of(context)
+                  .textTheme
+                  .labelLarge
+                  ?.color,
             ),
             const SizedBox(height: 8),
             Text(
@@ -42,7 +49,11 @@ class ProfileView extends GetView<ProfileController> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
-                color: Theme.of(context).textTheme.labelLarge?.color,
+                color: Theme
+                    .of(context)
+                    .textTheme
+                    .labelLarge
+                    ?.color,
               ),
             ),
           ],
@@ -59,21 +70,26 @@ class ProfileView extends GetView<ProfileController> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        toolbarHeight: 65,
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        toolbarHeight: 45,
+        backgroundColor: Theme
+            .of(context)
+            .appBarTheme
+            .backgroundColor,
         title: Padding(
           padding: const EdgeInsets.only(left: 12, right: 12, bottom: 10),
-          child: SvgPicture.network(
-            Theme.of(context).brightness == Brightness.dark
-                ? 'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images//Group%2023.svg'
-                : 'https://kmwzwjwbkjvaghlkzpck.supabase.co/storage/v1/object/public/images//logo_light.svg',
-            width: 55,
-            height: 55,
-          ),
+          child: Text("Settings", style: TextStyle(
+            color: Theme
+                .of(context)
+                .textTheme
+                .bodyLarge
+                ?.color,
+            fontSize: 22,
+            fontWeight: FontWeight.w600,
+          ),),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top:22.0, left: 16, right: 16),
+        padding: const EdgeInsets.only(top: 22.0, left: 16, right: 16),
         child: Center(
           child: Column(
             children: [
@@ -88,7 +104,10 @@ class ProfileView extends GetView<ProfileController> {
                   width: double.infinity,
                   padding: const EdgeInsets.only(left: 15, right: 20),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).inputDecorationTheme.fillColor,
+                    color: Theme
+                        .of(context)
+                        .inputDecorationTheme
+                        .fillColor,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
@@ -99,47 +118,49 @@ class ProfileView extends GetView<ProfileController> {
                         height: 50,
                         width: 50,
                         child: Obx(
-                          () => CircleAvatar(
-                            radius: 50,
-                            backgroundImage:
+                              () =>
+                              CircleAvatar(
+                                radius: 50,
+                                backgroundImage:
                                 profileController.userAvatar.value.isNotEmpty
                                     ? NetworkImage(
-                                      profileController.userAvatar.value,
-                                    )
+                                  profileController.userAvatar.value,
+                                )
                                     : NetworkImage(
-                                      'https://avatar.iran.liara.run/public/28',
-                                    ),
-                          ),
+                                  'https://avatar.iran.liara.run/public/28',
+                                ),
+                              ),
                         ),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Obx(
-                          () => ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            title: Text(
-                              profileController.userName.value.isNotEmpty
-                                  ? profileController.userName.value
-                                  : 'No name',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
+                              () =>
+                              ListTile(
+                                contentPadding: EdgeInsets.zero,
+                                title: Text(
+                                  profileController.userName.value.isNotEmpty
+                                      ? profileController.userName.value
+                                      : 'No name',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                                subtitle: Text(
+                                  profileController.userEmail.value.isNotEmpty
+                                      ? profileController.userEmail.value
+                                      : 'No email',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.grey[600],
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
                               ),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            ),
-                            subtitle: Text(
-                              profileController.userEmail.value.isNotEmpty
-                                  ? profileController.userEmail.value
-                                  : 'No email',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey[600],
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            ),
-                          ),
                         ),
                       ),
                     ],
@@ -156,7 +177,10 @@ class ProfileView extends GetView<ProfileController> {
                   runSpacing: 12,
                   children: [
                     SizedBox(
-                      width: (MediaQuery.of(context).size.width - 40 - 17) / 2,
+                      width: (MediaQuery
+                          .of(context)
+                          .size
+                          .width - 40 - 17) / 2,
                       child: myItemWidget(
                         context: context,
                         title: 'History',
@@ -167,7 +191,10 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                     ),
                     SizedBox(
-                      width: (MediaQuery.of(context).size.width - 40 - 5) / 2,
+                      width: (MediaQuery
+                          .of(context)
+                          .size
+                          .width - 40 - 5) / 2,
                       child: myItemWidget(
                         context: context,
                         title: 'Achievement',
@@ -178,7 +205,10 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                     ),
                     SizedBox(
-                      width: (MediaQuery.of(context).size.width - 40 - 17) / 2,
+                      width: (MediaQuery
+                          .of(context)
+                          .size
+                          .width - 40 - 17) / 2,
                       child: myItemWidget(
                         context: context,
                         title: 'Notification',
@@ -189,7 +219,10 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                     ),
                     SizedBox(
-                      width: (MediaQuery.of(context).size.width - 40 - 5) / 2,
+                      width: (MediaQuery
+                          .of(context)
+                          .size
+                          .width - 40 - 5) / 2,
                       child: myItemWidget(
                         context: context,
                         title: 'Language',
@@ -303,7 +336,9 @@ class ProfileView extends GetView<ProfileController> {
                   width: 150,
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
+                    color: Theme
+                        .of(context)
+                        .primaryColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
@@ -311,7 +346,11 @@ class ProfileView extends GetView<ProfileController> {
                     children: [
                       Icon(
                         Icons.logout,
-                        color: Theme.of(context).textTheme.labelLarge?.color,
+                        color: Theme
+                            .of(context)
+                            .textTheme
+                            .labelLarge
+                            ?.color,
                       ),
                       const SizedBox(width: 10),
                       Text(
@@ -319,7 +358,11 @@ class ProfileView extends GetView<ProfileController> {
                         style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
-                          color: Theme.of(context).textTheme.bodyLarge?.color,
+                          color: Theme
+                              .of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.color,
                         ),
                       ),
                     ],
