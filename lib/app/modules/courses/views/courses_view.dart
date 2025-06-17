@@ -25,13 +25,16 @@ class CoursesView extends GetView<CoursesController> {
               controller: searchController,
               onSearch: () {
                 final query = searchController.text.trim();
-                print('Searching for: $query');
-                // controller.search(query); // nếu bạn có hàm search
+                controller.searchCourses(query);
+              },
+              onChanged: (query) {
+                controller.searchCourses(query);
               },
             ),
           ),
         ),
       ),
+
 
       body: Padding(
         padding: const EdgeInsets.only(top:16.0, left: 16, right: 16),

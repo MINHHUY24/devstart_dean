@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class CustomSearchBar extends StatelessWidget {
   final TextEditingController controller;
   final VoidCallback onSearch;
+  final ValueChanged<String>? onChanged;
 
   const CustomSearchBar({
     super.key,
     required this.controller,
     required this.onSearch,
+    this.onChanged,
   });
 
   @override
@@ -30,7 +32,8 @@ class CustomSearchBar extends StatelessWidget {
           Expanded(
             child: TextField(
               controller: controller,
-              onSubmitted: (_) => onSearch(),
+              onChanged: onChanged, // Gọi khi người dùng gõ
+              onSubmitted: (_) => onSearch(), // Gọi khi nhấn Enter
               style: const TextStyle(color: Colors.white),
               decoration: const InputDecoration(
                 hintText: 'Search...',
@@ -43,11 +46,10 @@ class CustomSearchBar extends StatelessWidget {
                 isCollapsed: true,
                 contentPadding: EdgeInsets.symmetric(
                   vertical: 12,
-                ), // Căn chỉnh đẹp
+                ),
               ),
             ),
           ),
-
           GestureDetector(
             onTap: onSearch,
             child: const Padding(
