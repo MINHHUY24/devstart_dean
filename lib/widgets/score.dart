@@ -6,7 +6,8 @@ import '../app/routes/app_pages.dart';
 import '../../../../models/Questions_model.dart';
 
 class Score extends StatelessWidget {
-  final int score;
+  final double score;
+
   final int total;
   final Map<int, String> selectedAnswers;
   final List<QuestionsModel> questions;
@@ -27,7 +28,8 @@ class Score extends StatelessWidget {
     final userId = Supabase.instance.client.auth.currentUser?.id;
 
     // Nếu đạt đủ điểm, mở khóa level tiếp theo
-    if (userId != null && score >= (total * 0.6).round()) {
+    if (userId != null && score >= total * 0.6) {
+
       final nextLevel = currentLevel + 1;
       levelController.unlockNextLevel(
         userId: userId,
@@ -65,47 +67,39 @@ class Score extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               Text(
-                "$score / $total",
-                style: const TextStyle(
+                "${score.toStringAsFixed(1)} / 10.0 points",
+                style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(height: 8),
-              Text(
-                "${(score / total * 10).toStringAsFixed(1)} points",
-                style: const TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+
               const SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: () {
-                  Get.toNamed(
-                    Routes.ACHIEVEMENT, // hoặc route nào bạn dùng để xem đáp án
-                    arguments: {
-                      "selectedAnswers": selectedAnswers,
-                      "questions": questions,
-                    },
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF3DDACF),
-                  minimumSize: const Size(double.infinity, 48),
-                ),
-                child: const Text(
-                  "View answers",
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Get.toNamed(
+              //       Routes.ACHIEVEMENT, // hoặc route nào bạn dùng để xem đáp án
+              //       arguments: {
+              //         "selectedAnswers": selectedAnswers,
+              //         "questions": questions,
+              //       },
+              //     );
+              //   },
+              //   style: ElevatedButton.styleFrom(
+              //     backgroundColor: const Color(0xFF3DDACF),
+              //     minimumSize: const Size(double.infinity, 48),
+              //   ),
+              //   child: const Text(
+              //     "View answers",
+              //     style: TextStyle(
+              //       fontSize: 17,
+              //       color: Colors.white,
+              //       fontWeight: FontWeight.w700,
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
                   Get.offAllNamed(Routes.MOBILE_LAYOUT);

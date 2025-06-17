@@ -126,15 +126,15 @@ class PlayGameView extends GetView<PlayGameController> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Câu ${currentIndex + 1}/${controller.questions.length}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
+                      // Text(
+                      //   'Câu ${currentIndex + 1}/${controller.questions.length}',
+                      //   style: const TextStyle(
+                      //     color: Colors.white,
+                      //     fontSize: 22,
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
+                      // const SizedBox(height: 8),
 
                       Text(
                         currentQuestion.question,
@@ -177,27 +177,47 @@ class PlayGameView extends GetView<PlayGameController> {
                           currentQuestion.answerBlocks.length,
                               (index) {
                             final answer = currentQuestion.answerBlocks[index];
-                            final label = index < optionLabels.length
-                                ? optionLabels[index]
-                                : '${index + 1}';
+                            final label = index < optionLabels.length ? optionLabels[index] : '${index + 1}';
 
-                            final selected = controller.selectedAnswers[currentIndex] == answer;
+                            final selectedAnswer = controller.selectedAnswers[currentIndex];
+                            final isSelected = selectedAnswer == answer;
+                            final answerStatus = controller.answerResult[currentIndex];
+
+                            Color buttonColor = const Color(0xFF374156);
+
+                            if (isSelected) {
+                              final isRevisiting = controller.isRevisitingWrongQuestions;
+                              final isJustAnswered = controller.justAnsweredCurrentQuestion.value;
+
+                              if (isRevisiting) {
+                                // Chỉ tô màu nếu người dùng vừa trả lời lại
+                                if (answerStatus == true) {
+                                  buttonColor = Colors.green;
+                                } else if (answerStatus == false && isJustAnswered) {
+                                  buttonColor = Colors.red;
+                                }
+                              } else {
+                                if (answerStatus == true) {
+                                  buttonColor = Colors.green;
+                                } else if (answerStatus == false) {
+                                  buttonColor = Colors.red;
+                                }
+                              }
+                            }
+
+
+
 
                             return Container(
                               margin: const EdgeInsets.symmetric(vertical: 8),
                               width: double.infinity,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 14,
-                                    horizontal: 28,
-                                  ),
+                                  padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 28),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
-                                  backgroundColor: selected
-                                      ? Theme.of(context).primaryColor
-                                      : const Color(0xFF374156),
+                                  backgroundColor: buttonColor,
                                   alignment: Alignment.centerLeft,
                                 ),
                                 onPressed: () {
@@ -205,87 +225,85 @@ class PlayGameView extends GetView<PlayGameController> {
                                 },
                                 child: Text(
                                   '$label. $answer',
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ),
+                                  style: const TextStyle(fontSize: 18, color: Colors.white),
                                   textAlign: TextAlign.left,
                                 ),
                               ),
                             );
                           },
                         ),
+
                     ],
                   ),
                 ),
               ),
 
               // Nút điều hướng
-              Padding(
-                padding: const EdgeInsets.only(bottom: 60),
-                child: SizedBox(
-                  height: 45,
-                  child: Row(
-                    children: [
-                      // Back
-                      Expanded(
-                        child: InkWell(
-                          onTap: controller.currentIndex.value == 0
-                              ? null
-                              : controller.previousQuestion,
-
-                          borderRadius: BorderRadius.circular(5),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: controller.currentIndex.value == 0
-                                  ? Colors.grey
-                                  : Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'Back',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 120),
-                      // Next
-                      Expanded(
-                        child: InkWell(
-                          onTap: controller.selectedAnswers.containsKey(controller.currentIndex.value)
-                              ? controller.nextQuestion
-                              : null,
-
-                          borderRadius: BorderRadius.circular(5),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'Next',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 60),
+              //   child: SizedBox(
+              //     height: 45,
+              //     child: Row(
+              //       children: [
+              //         // Back
+              //         Expanded(
+              //           child: InkWell(
+              //             onTap: controller.currentIndex.value == 0
+              //                 ? null
+              //                 : controller.previousQuestion,
+              //
+              //             borderRadius: BorderRadius.circular(5),
+              //             child: Container(
+              //               decoration: BoxDecoration(
+              //                 color: controller.currentIndex.value == 0
+              //                     ? Colors.grey
+              //                     : Theme.of(context).primaryColor,
+              //                 borderRadius: BorderRadius.circular(5),
+              //               ),
+              //               child: const Center(
+              //                 child: Text(
+              //                   'Back',
+              //                   style: TextStyle(
+              //                     color: Colors.white,
+              //                     fontWeight: FontWeight.w700,
+              //                     fontSize: 16,
+              //                   ),
+              //                 ),
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //         const SizedBox(width: 120),
+              //         // Next
+              //         Expanded(
+              //           child: InkWell(
+              //             onTap: controller.selectedAnswers.containsKey(controller.currentIndex.value)
+              //                 ? controller.nextQuestion
+              //                 : null,
+              //
+              //             borderRadius: BorderRadius.circular(5),
+              //             child: Container(
+              //               decoration: BoxDecoration(
+              //                 color: Theme.of(context).primaryColor,
+              //                 borderRadius: BorderRadius.circular(5),
+              //               ),
+              //               child: const Center(
+              //                 child: Text(
+              //                   'Next',
+              //                   style: TextStyle(
+              //                     color: Colors.white,
+              //                     fontWeight: FontWeight.w700,
+              //                     fontSize: 16,
+              //                   ),
+              //                 ),
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         );
