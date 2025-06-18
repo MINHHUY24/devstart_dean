@@ -14,17 +14,24 @@ class CustomSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final borderColor = isDarkMode ? const Color(0xFF43D1BD) : const Color(0xFF283244);
+    final backroundSearchColor = isDarkMode ? const Color(0xFF374156) : const Color(0xFF495369);
+    final iconColor = isDarkMode ? const Color(0xFF43D1BD) : Colors.white;
+
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       padding: const EdgeInsets.only(left: 40, right: 20),
       decoration: BoxDecoration(
-        color: const Color(0xFF374156),
+        color: backroundSearchColor,
         borderRadius: BorderRadius.circular(10),
         border: Border(
-          top: BorderSide(color: Theme.of(context).primaryColor, width: 1),
-          left: BorderSide(color: Theme.of(context).primaryColor, width: 1),
-          right: BorderSide(color: Theme.of(context).primaryColor, width: 1),
-          bottom: BorderSide(color: Theme.of(context).primaryColor, width: 4),
+          top: BorderSide(color: borderColor, width: 1),
+          left: BorderSide(color: borderColor, width: 1),
+          right: BorderSide(color: borderColor, width: 1),
+          bottom: BorderSide(color: borderColor, width: 4),
         ),
       ),
       child: Row(
@@ -39,11 +46,11 @@ class CustomSearchBar extends StatelessWidget {
                 controller: controller,
                 onChanged: onChanged,
                 onSubmitted: (_) => onSearch(),
-                cursorColor: Theme.of(context).primaryColor, // màu con trỏ
+                cursorColor: Colors.white, // màu con trỏ
                 style: const TextStyle(color: Colors.white),
                 decoration: const InputDecoration(
                   hintText: 'Search...',
-                  hintStyle: TextStyle(color: Colors.white70),
+                  hintStyle: TextStyle(color: Colors.white),
                   border: InputBorder.none,
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,
@@ -58,9 +65,9 @@ class CustomSearchBar extends StatelessWidget {
           ),
           GestureDetector(
             onTap: onSearch,
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.search, color: Colors.tealAccent),
+              child: Icon(Icons.search, color: iconColor),
             ),
           ),
         ],

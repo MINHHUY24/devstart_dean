@@ -15,6 +15,9 @@ class CardCourse extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final bool isStarted = courseModel.progress > 0;
+    final bool isLightTheme = Theme.of(context).brightness == Brightness.light;
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final progressCustomColor = isDarkMode ? Colors.grey[700]! : Colors.grey[500]!;
 
     return Container(
       width: double.infinity,
@@ -23,6 +26,15 @@ class CardCourse extends StatelessWidget {
         decoration: BoxDecoration(
           color: Theme.of(context).inputDecorationTheme.fillColor,
           borderRadius: BorderRadius.circular(15),
+          boxShadow: isLightTheme
+              ? [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              blurRadius: 6,
+              offset: const Offset(0, 3),
+            ),
+          ]
+              : [],
         ),
         child: IntrinsicHeight(
           child: Row(
@@ -97,7 +109,7 @@ class CardCourse extends StatelessWidget {
                               color: Theme.of(context).primaryColor,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: const Center(
+                            child: Center(
                               child: Text(
                                 'Play',
                                 style: TextStyle(
@@ -132,14 +144,14 @@ class CardCourse extends StatelessWidget {
                         percent: courseModel.progress / 100.0,
                         center: Text(
                           "${courseModel.progress}%",
-                          style: const TextStyle(
-                            color: Colors.white,
+                          style: TextStyle(
+                            color: Theme.of(context).textTheme.bodyLarge?.color,
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         progressColor: Theme.of(context).primaryColor,
-                        backgroundColor: Colors.grey[700]!,
+                        backgroundColor: progressCustomColor,
                         circularStrokeCap: CircularStrokeCap.round,
                       ),
                     ),

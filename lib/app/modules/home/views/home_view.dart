@@ -158,23 +158,23 @@ class _HomeViewState extends State<HomeView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 'What Will You Learn Today?',
                 style: TextStyle(
-                  color: Color(0xFF00F5D4),
+                  color: Theme.of(context).primaryColor,
                   fontSize: 18,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w800,
                 ),
               ),
               const SizedBox(height: 12),
               Obx(() {
                 if (controller.courseList.isEmpty) {
-                  return const SizedBox(
+                  return SizedBox(
                     height: 200,
                     child: Center(
                       child: Text(
                         'No courses found',
-                        style: TextStyle(color: Colors.white70),
+                        style: TextStyle(color: Theme.of(context).primaryColor),
                       ),
                     ),
                   );
@@ -215,12 +215,12 @@ class _HomeViewState extends State<HomeView> {
                 );
               }),
               const SizedBox(height: 16),
-              const Text(
+              Text(
                 'Resume Your Last Lesson',
                 style: TextStyle(
-                  color: Color(0xFF00F5D4),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w800,
                 ),
               ),
               const SizedBox(height: 8),

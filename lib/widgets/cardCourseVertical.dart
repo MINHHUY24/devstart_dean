@@ -11,6 +11,8 @@ class CardCourseVertical extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLightTheme = Theme.of(context).brightness == Brightness.light;
+
     return GestureDetector(
       onTap: () {
         Get.toNamed(
@@ -20,11 +22,20 @@ class CardCourseVertical extends StatelessWidget {
         print('Course tapped');
       },
       child: Container(
-        width: 160, // Điều chỉnh nếu cần theo thiết kế
+        width: 160,
         margin: const EdgeInsets.symmetric(horizontal: 5),
         decoration: BoxDecoration(
           color: Theme.of(context).inputDecorationTheme.fillColor,
           borderRadius: BorderRadius.circular(15),
+          boxShadow: isLightTheme
+              ? [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              blurRadius: 6,
+              offset: const Offset(0, 3),
+            ),
+          ]
+              : [],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -39,7 +50,7 @@ class CardCourseVertical extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top:10, left: 10, right: 10),
+              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -69,3 +80,4 @@ class CardCourseVertical extends StatelessWidget {
     );
   }
 }
+

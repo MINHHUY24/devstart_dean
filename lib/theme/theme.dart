@@ -79,8 +79,10 @@ final ThemeData myDarkTheme = ThemeData(
     unselectedItemColor: Color(0xFF74777F), // Màu của các mục không được chọn
     type: BottomNavigationBarType.fixed, // Giữ nguyên số mục không bị thu nhỏ
   ),
-);
 
+
+
+);
 
 
 
@@ -120,7 +122,7 @@ final ThemeData myLightTheme = ThemeData(
 
   textTheme: const TextTheme(
     bodyLarge: TextStyle(color: Colors.black),
-    bodyMedium: TextStyle(color: Color(0xFF4A4A4A)),
+    bodyMedium: TextStyle(color: Color(0xFF74777F)),
     labelLarge: TextStyle(color: Colors.black),
   ),
 
@@ -136,7 +138,7 @@ final ThemeData myLightTheme = ThemeData(
 
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xFFF5F5F5),
-    selectedItemColor: Color(0xFF00796B),
+    selectedItemColor: Color(0xFF283244),
     unselectedItemColor: Color(0xFF9E9E9E),
     type: BottomNavigationBarType.fixed,
   ),

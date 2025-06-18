@@ -10,6 +10,10 @@ class PlayGameView extends GetView<PlayGameController> {
 
   @override
   Widget build(BuildContext context) {
+
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final iconColor = isDarkMode ? const Color(0xFF43D1BD) : Colors.white;
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -67,7 +71,7 @@ class PlayGameView extends GetView<PlayGameController> {
                           widthFactor: progress,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: const Color(0xFF34D2C2), // màu xanh lá
+                              color: Theme.of(context).primaryColor, // màu xanh lá
                               borderRadius: BorderRadius.circular(5),
                             ),
                           ),
@@ -82,8 +86,67 @@ class PlayGameView extends GetView<PlayGameController> {
                   InkWell(
                     borderRadius: BorderRadius.circular(5),
                     onTap: () {
-                      Get.back();
+                      showDialog(
+                        context: context,
+                        builder: (_) => Dialog(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                          backgroundColor: const Color(0xFF1B2231), // màu nền tối
+                          child: Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Text(
+                                  'Exit',
+                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                                ),
+                                const SizedBox(height: 12),
+                                const Text(
+                                  'Are you sure you want to close?',
+                                  style: TextStyle(color: Color(0xFF9E9E9E), fontSize: 17),
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(height: 20),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    // Cancel button
+                                    OutlinedButton(
+                                      onPressed: () => Navigator.of(context).pop(),
+                                      style: OutlinedButton.styleFrom(
+                                        side: BorderSide(color: Theme.of(context).primaryColor),
+                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                      ),
+                                      child: const Text(
+                                        'Cancel',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    // Yes button
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop(); // đóng dialog
+                                        Get.back(); // thoát màn hiện tại
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Theme.of(context).primaryColor,
+                                        foregroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+                                      ),
+                                      child: const Text('Yes', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
                     },
+
                     child: Container(
                       height: 40,
                       width: 50,
@@ -94,12 +157,13 @@ class PlayGameView extends GetView<PlayGameController> {
                       child: Center(
                         child: Icon(
                           Icons.close,
-                          color: Theme.of(context).primaryColor,
+                          color: iconColor,
                           size: 30,
                         ),
                       ),
                     ),
                   ),
+
                 ],
               ),
             ),

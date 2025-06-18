@@ -94,7 +94,10 @@ class ProfileView extends GetView<ProfileController> {
           child: Column(
             children: [
               InkWell(
-                borderRadius: BorderRadius.circular(12), // để splash bo góc
+                // borderRadius: BorderRadius.circular(12), // để splash bo góc
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
                 onTap: () {
                   // TODO: chuyển đến trang sửa thông tin cá nhân chẳng hạn
                   print('Tapped profile info');
@@ -238,10 +241,11 @@ class ProfileView extends GetView<ProfileController> {
 
               const SizedBox(height: 20),
               InkWell(
-                borderRadius: BorderRadius.circular(12), // để splash bo góc
+                // borderRadius: BorderRadius.circular(12), // để splash bo góc
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
                 onTap: () {
-                  // TODO: chuyển đến trang sửa thông tin cá nhân chẳng hạn
-                  print('Tapped profile info');
                 },
                 child: Ink(
                   height: 70,
@@ -346,11 +350,7 @@ class ProfileView extends GetView<ProfileController> {
                     children: [
                       Icon(
                         Icons.logout,
-                        color: Theme
-                            .of(context)
-                            .textTheme
-                            .labelLarge
-                            ?.color,
+                        color: Colors.white,
                       ),
                       const SizedBox(width: 10),
                       Text(
@@ -358,12 +358,8 @@ class ProfileView extends GetView<ProfileController> {
                         style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
-                          color: Theme
-                              .of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.color,
-                        ),
+                          color: Colors.white,
+                        )
                       ),
                     ],
                   ),

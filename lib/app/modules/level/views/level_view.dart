@@ -45,7 +45,7 @@ class _LevelViewState extends State<LevelView> {
       appBar: AppBar(
         title: Text(
           widget.courseModel.name,
-          style: const TextStyle(fontSize: 20),
+          style: TextStyle(fontSize: 20, color: Theme.of(context).textTheme.labelLarge?.color),
         ),
         centerTitle: true,
       ),

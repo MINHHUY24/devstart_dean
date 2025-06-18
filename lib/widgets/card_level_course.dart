@@ -22,38 +22,48 @@ class CardLevelCourse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final playTurnController = Get.find<PlayTurnController>();
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final backroundSearchColor =
+        isDarkMode ? const Color(0xFF374156) : const Color(0xFF495369);
+    final iconColor = isDarkMode ? const Color(0xFF43D1BD) : Colors.white;
 
     return Column(
       children: [
         GestureDetector(
           onTap: () {
             if (isUnlocked) {
-              if (playTurnController.currentTurns.value > 0) {
-                playTurnController.useTurn();
-                onPressed();
-              } else {
-                final time = playTurnController.timeUntilNextRestore;
-                final message = time == null
-                    ? 'Bạn đã hết lượt chơi. Vui lòng đợi để hồi lượt.'
-                    : 'Hết lượt. Lượt tiếp theo sau: ${time.inMinutes} phút';
-
-                _showSnackbar(message, durationMs: 2000);
-              }
+              onPressed(); // Level đã mở, gọi callback
             } else {
-              _showSnackbar('Bạn chưa mở khóa level này', durationMs: 1500);
+              _showSnackbar(
+                'This level is locked. Complete the previous one to continue.',
+                durationMs: 1500,
+              );
             }
           },
+
           child: Container(
             width: double.infinity,
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: const Color(0xFF374156),
+              color: backroundSearchColor,
               borderRadius: BorderRadius.circular(10),
               border: Border(
-                top: BorderSide(color: Theme.of(context).primaryColor, width: 1),
-                left: BorderSide(color: Theme.of(context).primaryColor, width: 1),
-                right: BorderSide(color: Theme.of(context).primaryColor, width: 1),
-                bottom: BorderSide(color: Theme.of(context).primaryColor, width: 4),
+                top: BorderSide(
+                  color: Theme.of(context).primaryColor,
+                  width: 1,
+                ),
+                left: BorderSide(
+                  color: Theme.of(context).primaryColor,
+                  width: 1,
+                ),
+                right: BorderSide(
+                  color: Theme.of(context).primaryColor,
+                  width: 1,
+                ),
+                bottom: BorderSide(
+                  color: Theme.of(context).primaryColor,
+                  width: 4,
+                ),
               ),
             ),
             child: Row(
@@ -63,18 +73,14 @@ class CardLevelCourse extends StatelessWidget {
                   Text(
                     "Level $level",
                     style: TextStyle(
-                      color: Theme.of(context).textTheme.bodyLarge?.color,
+                      color: Colors.white,
                       fontWeight: FontWeight.w600,
                       fontSize: 18,
                     ),
                   ),
                   const SizedBox(width: 8),
                 ] else
-                  Icon(
-                    Icons.lock_outlined,
-                    color: Theme.of(context).primaryColor,
-                    size: 28,
-                  ),
+                  Icon(Icons.lock_outlined, color: iconColor, size: 28),
               ],
             ),
           ),
@@ -90,7 +96,7 @@ class CardLevelCourse extends StatelessWidget {
       _isSnackbarShowing = true;
 
       Get.snackbar(
-        'Thông báo',
+        'Notification',
         message,
         snackPosition: SnackPosition.TOP,
         backgroundColor: const Color(0xFF374156),
