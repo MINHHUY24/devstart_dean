@@ -1,0 +1,18 @@
+{
+  "" : {
+    "diagnostics" : "/Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/arm64/app_links-master.dia",
+    "emit-module-dependencies" : "/Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/arm64/app_links-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/arm64/app_links-master-emit-module.dia",
+    "swift-dependencies" : "/Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/arm64/app_links-master.swiftdeps"
+  },
+  "/Users/leminhhuy/.pub-cache/hosted/pub.dev/app_links-6.4.0/macos/app_links/Sources/app_links/AppLinksMacosPlugin.swift" : {
+    "const-values" : "/Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/arm64/AppLinksMacosPlugin.swiftconstvalues",
+    "dependencies" : "/Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/arm64/AppLinksMacosPlugin.d",
+    "diagnostics" : "/Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/arm64/AppLinksMacosPlugin.dia",
+    "index-unit-output-path" : "/Pods.build/Debug/app_links.build/Objects-normal/arm64/AppLinksMacosPlugin.o",
+    "llvm-bc" : "/Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/arm64/AppLinksMacosPlugin.bc",
+    "object" : "/Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/arm64/AppLinksMacosPlugin.o",
+    "swift-dependencies" : "/Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/arm64/AppLinksMacosPlugin.swiftdeps",
+    "swiftmodule" : "/Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/arm64/AppLinksMacosPlugin~partial.swiftmodule"
+  }
+}

@@ -1,0 +1,45 @@
+moduledependenciestarget: \
+  /Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/AppAuth.build/module.modulemap \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/Target\ Support\ Files/AppAuth/AppAuth-umbrella.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Cocoa.framework/Modules/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Foundation.framework/Modules/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/TargetConditionals.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/CoreServices.framework/Modules/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/AppKit.framework/Modules/module.modulemap \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDAuthState.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDAuthStateChangeDelegate.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDAuthStateErrorDelegate.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDAuthorizationRequest.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDExternalUserAgentRequest.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDResponseTypes.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDScopes.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDAuthorizationResponse.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDAuthorizationService.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDError.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDErrorUtilities.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDExternalUserAgent.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDExternalUserAgentSession.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDGrantTypes.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDIDToken.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDRegistrationRequest.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDRegistrationResponse.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDScopeUtilities.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDServiceConfiguration.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDServiceDiscovery.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDTokenRequest.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDTokenResponse.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDTokenUtilities.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDURLSessionProvider.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDEndSessionRequest.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDEndSessionResponse.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDClientMetadataParameters.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDDefines.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDFieldMapping.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuthCore/OIDURLQueryComponent.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuth.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuth/macOS/OIDAuthState+Mac.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuth/macOS/OIDAuthorizationService+Mac.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuth/macOS/OIDExternalUserAgentMac.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuth/macOS/OIDRedirectHTTPHandler.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/AppAuth/Sources/AppAuth/macOS/LoopbackHTTPServer/OIDLoopbackHTTPServer.h

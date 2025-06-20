@@ -236,11 +236,11 @@ class _HomeViewState extends State<HomeView> {
                         .toList();
 
                 if (progressedCourses.isEmpty) {
-                  return const Padding(
+                  return Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Text(
                       "You haven't started any course yet",
-                      style: TextStyle(fontSize: 16, color: Colors.white70),
+                      style: TextStyle(fontSize: 16, color: Theme.of(context).textTheme.labelLarge!.color),
                     ),
                   );
                 }

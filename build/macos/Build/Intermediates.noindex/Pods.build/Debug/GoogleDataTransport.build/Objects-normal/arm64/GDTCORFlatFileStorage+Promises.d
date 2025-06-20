@@ -1,0 +1,20 @@
+dependencies: \
+  /Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/GoogleDataTransport.build/module.modulemap \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/GDTCORFlatFileStorage+Promises.m \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORFlatFileStorage+Promises.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORFlatFileStorage.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Foundation.framework/Modules/module.modulemap \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Internal/GDTCORLifecycle.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Internal/GDTCORPlatform.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/SystemConfiguration.framework/Modules/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AppKit.framework/Modules/module.modulemap \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Internal/GDTCORStorageEventSelector.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORTargets.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Internal/GDTCORStorageProtocol.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Internal/GDTCORStorageSizeBytes.h \
+  /Users/leminhhuy/doan/devstart_dean/build/macos/Build/Intermediates.noindex/Pods.build/Debug/PromisesObjC.build/module.modulemap \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromises.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORMetricsMetadata.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Internal/GDTCOREventDropReason.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORStorageMetadata.h \
+  /Users/leminhhuy/doan/devstart_dean/macos/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORUploadBatch.h

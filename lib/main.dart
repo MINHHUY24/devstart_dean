@@ -2,9 +2,7 @@ import 'package:devstart/theme/theme.dart';
 import 'package:devstart/widgets/playTurnController.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'app/routes/app_pages.dart';
 import 'app/services/notification_service.dart';
@@ -24,14 +22,14 @@ void main() async {
   await NotificationService.init();
 
   final themeController = Get.put(ThemeController());
-  await themeController.loadTheme(); // Đảm bảo load theme trước khi runApp
+  await themeController.loadTheme();
 
   Get.put(PlayTurnController());
-  runApp(MyApp()); // Nên thêm const
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key}); // Có const
+  MyApp({super.key});
 
   final themeController = Get.find<ThemeController>();
 
