@@ -152,115 +152,113 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'What Will You Learn Today?',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-              const SizedBox(height: 12),
-              Obx(() {
-                if (controller.courseList.isEmpty) {
-                  return SizedBox(
-                    height: 200,
-                    child: Center(
-                      child: Text(
-                        'No courses found',
-                        style: TextStyle(color: Theme.of(context).primaryColor),
-                      ),
-                    ),
-                  );
-                }
-                return SizedBox(
-                  height: 200,
-                  child: NotificationListener<ScrollNotification>(
-                    onNotification: (notification) {
-                      if (notification is UserScrollNotification ||
-                          notification is ScrollStartNotification) {
-                        _userInteracting = true;
+      body: controller.obx(
+            (courses) {
+          final progressedCourses = controller.playedCourses
+              .where((course) =>
+          course.progress != null &&
+              course.progress > 0 &&
+              course.progress < 100)
+              .toList();
 
-                        // Cập nhật lại vị trí hiện tại khi người dùng kéo
-                        _scrollPosition = _scrollController.offset;
-
-                        _resumeTimer?.cancel();
-                        _resumeTimer = Timer(const Duration(seconds: 2), () {
-                          _userInteracting = false;
-                        });
-                      }
-                      return false;
-                    },
-                    child: ListView.separated(
-                      controller: _scrollController,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: controller.courseList.length,
-                      itemBuilder: (context, index) {
-                        final course = controller.courseList[index];
-                        return SizedBox(
-                          width: 160,
-                          child: CardCourseVertical(courseModel: course),
-                        );
-                      },
-                      separatorBuilder:
-                          (context, index) => const SizedBox(width: 12),
+          return Padding(
+            padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'What Will You Learn Today?',
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w800,
                     ),
                   ),
-                );
-              }),
-              const SizedBox(height: 16),
-              Text(
-                'Resume Your Last Lesson',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Obx(() {
-                final progressedCourses =
-                    controller.playedCourses
-                        .where(
-                          (course) =>
-                              course.progress != null &&
-                              course.progress > 0 &&
-                              course.progress < 100,
-                        )
-                        .toList();
+                  const SizedBox(height: 12),
 
-                if (progressedCourses.isEmpty) {
-                  return Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      "You haven't started any course yet",
-                      style: TextStyle(fontSize: 16, color: Theme.of(context).textTheme.labelLarge!.color),
+                  /// --- Horizontal course list ---
+                  SizedBox(
+                    height: 200,
+                    child: NotificationListener<ScrollNotification>(
+                      onNotification: (notification) {
+                        if (notification is UserScrollNotification ||
+                            notification is ScrollStartNotification) {
+                          _userInteracting = true;
+                          _scrollPosition = _scrollController.offset;
+                          _resumeTimer?.cancel();
+                          _resumeTimer = Timer(const Duration(seconds: 2), () {
+                            _userInteracting = false;
+                          });
+                        }
+                        return false;
+                      },
+                      child: ListView.separated(
+                        controller: _scrollController,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.courseList.length,
+                        itemBuilder: (context, index) {
+                          final course = controller.courseList[index];
+                          return SizedBox(
+                            width: 160,
+                            child: CardCourseVertical(courseModel: course),
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
+                        const SizedBox(width: 12),
+                      ),
                     ),
-                  );
-                }
+                  ),
 
-                return ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: progressedCourses.length,
-                  itemBuilder: (context, index) {
-                    final course = progressedCourses[index];
-                    return CardCourse(courseModel: course);
-                  },
-                  separatorBuilder:
-                      (context, index) => const SizedBox(height: 12),
-                );
-              }),
-            ],
-          ),
-        ),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Resume Your Last Lesson',
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  if (progressedCourses.isEmpty)
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        "You haven't started any course yet",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Theme.of(context).textTheme.labelLarge!.color,
+                        ),
+                      ),
+                    )
+                  else
+                    ListView.separated(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: progressedCourses.length,
+                      itemBuilder: (context, index) {
+                        final course = progressedCourses[index];
+                        return CardCourse(courseModel: course);
+                      },
+                      separatorBuilder: (context, index) =>
+                      const SizedBox(height: 12),
+                    ),
+                ],
+              ),
+            ),
+          );
+        },
+
+        // Nếu đang loading
+        onLoading: const Center(child: CircularProgressIndicator()),
+
+        // Nếu không có khóa học nào
+        onEmpty: const Center(child: Text("No courses found")),
+
+        // Nếu có lỗi
+        onError: (error) => Center(child: Text("Lỗi: $error")),
       ),
+
     );
   }
 

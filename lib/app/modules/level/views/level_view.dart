@@ -76,7 +76,7 @@ class _LevelViewState extends State<LevelView> {
                 level: levelNum,
                 isUnlocked: isUnlocked,
                 onPressed: () {
-                  controller.setLevelAndTopic(levelNum);
+                  controller.setCourseAndLevel(controller.selectedCourse.value, levelNum);
 
                   final course = controller.selectedCourse.value;
                   final topic = controller.selectedTopic.value ?? '';
@@ -92,6 +92,7 @@ class _LevelViewState extends State<LevelView> {
                     },
                   );
                 },
+
               );
             },
           ),

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../../models/course_model.dart';
 import '../../../services/course_service.dart';
 
@@ -19,9 +20,15 @@ class HomeController extends GetxController with StateMixin<List<CourseModel>> {
   // Hàm gọi dữ liệu khóa học
   Future<void> fetchCourses() async {
     try {
-      change(null, status: RxStatus.loading()); // Bắt đầu loading
+      change(null, status: RxStatus.loading());
 
-      final courses = await courseService.getCourses();
+      final userId = Supabase.instance.client.auth.currentUser?.id;
+
+      if (userId == null) {
+        throw Exception("User chưa đăng nhập");
+      }
+
+      final courses = await courseService.getCoursesWithUserProgress(userId);
       courseList.assignAll(courses);
 
       if (courses.isEmpty) {
@@ -34,5 +41,6 @@ class HomeController extends GetxController with StateMixin<List<CourseModel>> {
       change(null, status: RxStatus.error('Failed to fetch courses'));
     }
   }
+
 }
 

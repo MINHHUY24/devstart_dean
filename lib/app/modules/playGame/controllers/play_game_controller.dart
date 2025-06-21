@@ -9,7 +9,7 @@ import '../../level/controllers/level_controller.dart';
 class PlayGameController extends GetxController {
   final RxList<QuestionsModel> questions = <QuestionsModel>[].obs;
   final RxInt currentIndex = 0.obs;
-  final RxDouble score = 0.0.obs; // ✅ dùng double
+  final RxDouble score = 0.0.obs; //
   final TextEditingController textController = TextEditingController();
   final Rx<Duration> remainingTime = Rx(const Duration(minutes: 10));
 

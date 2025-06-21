@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../app/modules/home/controllers/home_controller.dart';
 import '../app/modules/level/controllers/level_controller.dart';
 import '../app/routes/app_pages.dart';
 import '../../../../models/Questions_model.dart';
 
-class Score extends StatelessWidget {
+class Score extends StatefulWidget {
   final double score;
-
   final int total;
   final Map<int, String> selectedAnswers;
   final List<QuestionsModel> questions;
@@ -21,25 +21,42 @@ class Score extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  State<Score> createState() => _ScoreState();
+}
+
+class _ScoreState extends State<Score> {
+  @override
+  void initState() {
+    super.initState();
+    _handleUnlock();
+  }
+
+  Future<void> _handleUnlock() async {
     final levelController = Get.find<LevelController>();
     final currentLevel = levelController.selectedLevel.value;
     final course = levelController.selectedCourse.value;
     final userId = Supabase.instance.client.auth.currentUser?.id;
 
-    // Nếu đạt đủ điểm, mở khóa level tiếp theo
-    if (userId != null && score >= total * 0.6) {
-
+    if (userId != null && widget.score >= widget.total * 0.6) {
       final nextLevel = currentLevel + 1;
-      levelController.unlockNextLevel(
+
+      await levelController.unlockNextLevel(
         userId: userId,
         courseName: course,
         newLevel: nextLevel,
-      ).then((_) {
-        // Gọi lại để cập nhật giao diện
-        levelController.fetchUnlockedLevel(userId: userId, courseName: course);
-      });
+      );
+      await levelController.fetchUnlockedLevel(
+        userId: userId,
+        courseName: course,
+      );
+      print('Đã mở khóa level $nextLevel cho khóa học $course');
+    } else {
+      print('Không đủ điểm để mở khóa hoặc thiếu userId');
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Padding(
@@ -67,39 +84,14 @@ class Score extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               Text(
-                "${score.toStringAsFixed(1)} / 10.0 points",
-                style: TextStyle(
+                "${widget.score.toStringAsFixed(1)} / 10.0 points",
+                style: const TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
               ),
-
               const SizedBox(height: 30),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     Get.toNamed(
-              //       Routes.ACHIEVEMENT, // hoặc route nào bạn dùng để xem đáp án
-              //       arguments: {
-              //         "selectedAnswers": selectedAnswers,
-              //         "questions": questions,
-              //       },
-              //     );
-              //   },
-              //   style: ElevatedButton.styleFrom(
-              //     backgroundColor: const Color(0xFF3DDACF),
-              //     minimumSize: const Size(double.infinity, 48),
-              //   ),
-              //   child: const Text(
-              //     "View answers",
-              //     style: TextStyle(
-              //       fontSize: 17,
-              //       color: Colors.white,
-              //       fontWeight: FontWeight.w700,
-              //     ),
-              //   ),
-              // ),
-              // const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
                   Get.offAllNamed(Routes.MOBILE_LAYOUT);

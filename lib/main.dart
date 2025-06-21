@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'app/modules/home/controllers/home_controller.dart';
 import 'app/routes/app_pages.dart';
 import 'app/services/notification_service.dart';
 import 'firebase_options.dart';
@@ -25,6 +26,8 @@ void main() async {
   await themeController.loadTheme();
 
   Get.put(PlayTurnController());
+
+  Get.put(HomeController(), permanent: true);
   runApp(MyApp());
 }
 
