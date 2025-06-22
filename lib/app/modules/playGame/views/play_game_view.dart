@@ -173,7 +173,12 @@ class PlayGameView extends GetView<PlayGameController> {
 
       body: Obx(() {
         if (controller.questions.isEmpty) {
-          return const Center(child: CircularProgressIndicator());
+          return Center(
+            child: CircularProgressIndicator(
+               color: Theme.of(context).primaryColor,
+            ),
+          );
+
         }
 
         final currentIndex = controller.currentIndex.value;

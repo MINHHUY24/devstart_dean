@@ -34,15 +34,21 @@ class CoursesController extends GetxController with StateMixin<List<CourseModel>
   }
 
   void searchCourses(String keyword) {
-    if (keyword.isEmpty) {
-      courseList.assignAll(_allCourses);
+    if (keyword.trim().isEmpty) {
+      change(_allCourses, status: RxStatus.success());
     } else {
-      final filtered = _allCourses.where((course) =>
-          course.name.toLowerCase().contains(keyword.toLowerCase())
-      ).toList();
-      courseList.assignAll(filtered);
+      final filtered = _allCourses
+          .where((course) => course.name.toLowerCase().contains(keyword.toLowerCase()))
+          .toList();
+
+      if (filtered.isEmpty) {
+        change([], status: RxStatus.empty());
+      } else {
+        change(filtered, status: RxStatus.success());
+      }
     }
   }
+
 
   Future<void> addCourse(CourseModel course) async {
     try {

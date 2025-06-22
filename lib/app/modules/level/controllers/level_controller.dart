@@ -22,6 +22,7 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
     print('LevelController initialized');
   }
 
+  //Hàm duy nhất bạn gọi từ UI khi chọn course & level
   void setCourseAndLevel(String course, int level) {
     selectedCourse.value = course;
     selectedLevel.value = level;
@@ -30,12 +31,13 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
 
     print('setCourseAndLevel gọi fetch với topic: $topic');
 
-    //Gọi fetch
+    //Gọi fetch tại đây
     fetchQuestions(
       course: course,
       level: level,
       topic: topic,
-      language: 'Việt Nam',
+      language: Get.locale?.languageCode == 'vi' ? 'Việt Nam' : 'English',
+
     );
   }
 
@@ -53,8 +55,8 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
   Future<bool> fetchQuestions({
     required String course,
     int level = 1,
-    String language = "Việt Nam",
     String? topic,
+    required String language,
   }) async {
     if (course.isEmpty) {
       change(null, status: RxStatus.error("Bạn chưa chọn khóa học"));
@@ -63,6 +65,7 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
 
     change(null, status: RxStatus.loading());
     final topicToSend = topic ?? "";
+    final language = Get.locale?.languageCode == 'vi' ? 'Việt Nam' : 'English';
 
     try {
       final response = await _lessonsService.generateLessons(
@@ -89,7 +92,7 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
       change(null, status: RxStatus.error(e.toString()));
       return false;
     }
-  }
+}
 
   Future<void> fetchUnlockedLevel({
     required String userId,

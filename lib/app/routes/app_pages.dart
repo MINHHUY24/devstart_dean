@@ -9,8 +9,6 @@ import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/language/bindings/language_binding.dart';
-import '../modules/language/views/language_view.dart';
 import '../modules/level/bindings/level_binding.dart';
 import '../modules/level/views/level_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -76,11 +74,6 @@ class AppPages {
       name: _Paths.ACHIEVEMENT,
       page: () => const AchievementView(),
       binding: AchievementBinding(),
-    ),
-    GetPage(
-      name: _Paths.LANGUAGE,
-      page: () => const LanguageView(),
-      binding: LanguageBinding(),
     ),
     GetPage(
       name: _Paths.LEVEL,

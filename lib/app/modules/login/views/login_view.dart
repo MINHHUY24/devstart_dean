@@ -34,7 +34,8 @@ class LoginView extends GetView<LoginController> {
                   const SizedBox(height: 150),
 
                   Text(
-                    "Welcome to DevStart!",
+                    "welcome".tr,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -45,9 +46,10 @@ class LoginView extends GetView<LoginController> {
                   const SizedBox(height: 8),
 
                   Text(
-                    "From ideas to action. From challenges to skills.",
+                    'ideas_to_action'.tr,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 13.5,
+                      fontSize: 15,
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold,
                     ),
@@ -74,8 +76,8 @@ class LoginView extends GetView<LoginController> {
                       'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/640px-Google_%22G%22_logo.svg.png',
                       height: 24,
                     ),
-                    label: const Text(
-                      "Sign in with Google",
+                    label: Text(
+                      'login'.tr,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,

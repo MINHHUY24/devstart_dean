@@ -1,7 +1,6 @@
 import 'package:devstart/app/modules/achievement/controllers/achievement_controller.dart';
 import 'package:devstart/app/modules/courses/controllers/courses_controller.dart';
 import 'package:devstart/app/modules/history/controllers/history_controller.dart';
-import 'package:devstart/app/modules/language/controllers/language_controller.dart';
 import 'package:devstart/app/modules/level/controllers/level_controller.dart';
 import 'package:devstart/app/modules/profile/controllers/profile_controller.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,9 +44,6 @@ class MobileLayoutBinding extends Bindings {
           () => AchievementController(),
     );
 
-    Get.lazyPut<LanguageController>(
-          () => LanguageController(),
-    );
 
 
   }

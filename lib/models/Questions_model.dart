@@ -13,7 +13,7 @@ class QuestionsModel {
 
   factory QuestionsModel.fromJson(Map<String, dynamic> json) {
     final rawQuestion = json['question'] as String;
-    final cleanQuestion = rawQuestion.replaceAll('!empty', '').trim();
+    final cleanQuestion = rawQuestion.replaceAll('!empty', '_____').trim();
 
     return QuestionsModel(
       question: cleanQuestion,
@@ -23,6 +23,7 @@ class QuestionsModel {
     );
   }
 
+
   Map<String, dynamic> toJson() {
     return {
       'question': question,
@@ -31,4 +32,19 @@ class QuestionsModel {
       'type': type,
     };
   }
+  QuestionsModel copyWith({
+    String? question,
+    List<String>? answerBlocks,
+    String? correctAnswer,
+    String? type,
+  }) {
+    return QuestionsModel(
+      question: question ?? this.question,
+      answerBlocks: answerBlocks ?? this.answerBlocks,
+      correctAnswer: correctAnswer ?? this.correctAnswer,
+      type: type ?? this.type,
+    );
+  }
+
+
 }

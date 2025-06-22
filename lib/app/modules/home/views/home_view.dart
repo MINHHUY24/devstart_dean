@@ -168,7 +168,7 @@ class _HomeViewState extends State<HomeView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'What Will You Learn Today?',
+                    'what_learn_today'.tr,
                     style: TextStyle(
                       color: Theme.of(context).primaryColor,
                       fontSize: 18,
@@ -212,7 +212,7 @@ class _HomeViewState extends State<HomeView> {
 
                   const SizedBox(height: 16),
                   Text(
-                    'Resume Your Last Lesson',
+                    'resume_last_lesson'.tr,
                     style: TextStyle(
                       color: Theme.of(context).primaryColor,
                       fontSize: 18,
@@ -224,7 +224,7 @@ class _HomeViewState extends State<HomeView> {
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
-                        "You haven't started any course yet",
+                        'no_course_started'.tr,
                         style: TextStyle(
                           fontSize: 16,
                           color: Theme.of(context).textTheme.labelLarge!.color,
@@ -250,7 +250,12 @@ class _HomeViewState extends State<HomeView> {
         },
 
         // Nếu đang loading
-        onLoading: const Center(child: CircularProgressIndicator()),
+        onLoading: Center(
+          child: CircularProgressIndicator(
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
+
 
         // Nếu không có khóa học nào
         onEmpty: const Center(child: Text("No courses found")),

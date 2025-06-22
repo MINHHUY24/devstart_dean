@@ -57,7 +57,7 @@ class MobileLayoutView extends GetView<MobileLayoutController> {
                           ),
                         )
                         : const Icon(Icons.home_outlined),
-                label: 'Home',
+                label: 'home'.tr,
               ),
               BottomNavigationBarItem(
                 icon:
@@ -81,7 +81,7 @@ class MobileLayoutView extends GetView<MobileLayoutController> {
                           ),
                         )
                         : const Icon(Icons.menu_book_outlined),
-                label: 'Courses',
+                label: 'course'.tr,
               ),
               BottomNavigationBarItem(
                 icon:
@@ -105,7 +105,7 @@ class MobileLayoutView extends GetView<MobileLayoutController> {
                           ),
                         )
                         : const Icon(Icons.settings_outlined),
-                label: 'Settings',
+                label: 'settings'.tr,
               ),
             ],
           ),

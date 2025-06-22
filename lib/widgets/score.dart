@@ -64,8 +64,8 @@ class _ScoreState extends State<Score> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                "Congratulations!",
+              Text(
+                "congratulations".tr,
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -94,14 +94,18 @@ class _ScoreState extends State<Score> {
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
+                  final homeController = Get.find<HomeController>();
+                  homeController.fetchCourses(); // Gọi lại danh sách course có cập nhật
+
                   Get.offAllNamed(Routes.MOBILE_LAYOUT);
                 },
+
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF374156),
                   minimumSize: const Size(double.infinity, 48),
                 ),
-                child: const Text(
-                  "Home",
+                child: Text(
+                  "home".tr,
                   style: TextStyle(
                     fontSize: 17,
                     color: Colors.white,

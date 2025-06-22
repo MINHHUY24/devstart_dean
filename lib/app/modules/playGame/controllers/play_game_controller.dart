@@ -20,8 +20,8 @@ class PlayGameController extends GetxController {
   bool isRevisitingWrongQuestions = false;
   final RxBool justAnsweredCurrentQuestion = false.obs;
 
-  int originalQuestionCount = 0; // ✅ tổng số câu hỏi ban đầu
-  final Set<String> scoredQuestions = {}; // ✅ theo dõi câu đã được cộng điểm
+  int originalQuestionCount = 0; //tổng số câu hỏi ban đầu
+  final Set<String> scoredQuestions = {}; // theo dõi câu đã được cộng điểm
 
   int get remainingSeconds => remainingTime.value.inSeconds;
   Timer? _timer;
@@ -45,7 +45,7 @@ class PlayGameController extends GetxController {
   void finishGame() async {
     _timer?.cancel();
 
-    final total = originalQuestionCount; // ✅ tổng số câu ban đầu
+    final total = originalQuestionCount; //tổng số câu ban đầu
     final currentScore = score.value;
 
     final args = Get.arguments ?? {};
@@ -94,8 +94,30 @@ class PlayGameController extends GetxController {
   }
 
   void setQuestions(List<QuestionsModel> newQuestions) {
-    questions.assignAll(newQuestions);
-    originalQuestionCount = newQuestions.length; // ✅ lưu số câu ban đầu
+    final shuffledQuestions = newQuestions.map<QuestionsModel>((q) {
+
+      final shuffledAnswers = List<String>.from(q.answerBlocks)..shuffle();
+
+      // Đáp án đúng từ API (chuẩn hóa viết thường, loại bỏ khoảng trắng thừa)
+      final correctNormalized = q.correctAnswer.trim().toLowerCase();
+
+      // Tìm lại đáp án đúng sau khi shuffle
+      final matchedAnswer = shuffledAnswers.firstWhereOrNull(
+            (ans) => ans.trim().toLowerCase() == correctNormalized,
+      );
+
+      if (matchedAnswer == null) {
+        print('Không tìm thấy đáp án đúng sau khi shuffle: ${q.correctAnswer}');
+      }
+
+      return q.copyWith(
+        answerBlocks: shuffledAnswers,
+        correctAnswer: matchedAnswer ?? q.correctAnswer, // fallback an toàn
+      );
+    }).toList();
+
+    questions.assignAll(shuffledQuestions);
+    originalQuestionCount = shuffledQuestions.length;
     currentIndex.value = 0;
     score.value = 0.0;
     selectedAnswers.clear();
@@ -103,10 +125,11 @@ class PlayGameController extends GetxController {
     answerResult.clear();
     wrongQuestionsQueue.clear();
     isRevisitingWrongQuestions = false;
-    scoredQuestions.clear(); // ✅ reset cộng điểm
+    scoredQuestions.clear();
 
     startTimer();
   }
+
 
   void selectAnswer(String userAnswer) {
     final index = currentIndex.value;
@@ -119,12 +142,12 @@ class PlayGameController extends GetxController {
     answerResult[index] = isCorrect;
     justAnsweredCurrentQuestion.value = true;
 
-    // ✅ Nếu sai ở lượt đầu → cho làm lại sau
+    // Nếu sai ở lượt đầu → cho làm lại sau
     if (!isCorrect && !isRevisitingWrongQuestions) {
       wrongQuestionsQueue.add(currentQuestion);
     }
 
-    // ✅ Chỉ cộng điểm nếu chưa được cộng
+    // Chỉ cộng điểm nếu chưa được cộng
     final questionKey = currentQuestion.question;
     if (isCorrect && !scoredQuestions.contains(questionKey)) {
       final pointPerQuestion = 10.0 / originalQuestionCount;
@@ -166,17 +189,26 @@ class PlayGameController extends GetxController {
 
     final levelController = Get.find<LevelController>();
 
-    // final success = await levelController.fetchQuestionsMock();
-    final success = await levelController.fetchQuestions(course: course);
-
-
-    if (success) {
-      setQuestions(levelController.state ?? []);
+    //Nếu câu hỏi đã được tải từ trước, không gọi lại API
+    if (levelController.state != null && levelController.state!.isNotEmpty) {
+      setQuestions(levelController.state!);
     } else {
-      Get.snackbar('Lỗi', 'Không thể tải câu hỏi mẫu');
-      Get.back();
+      final success = await levelController.fetchQuestions(
+        course: course,
+        level: level,
+        topic: topic,
+        language: Get.locale?.languageCode == 'vi' ? 'Việt Nam' : 'English',
+      );
+
+      if (success) {
+        setQuestions(levelController.state ?? []);
+      } else {
+        Get.snackbar('Lỗi', 'Không thể tải câu hỏi');
+        Get.back();
+      }
     }
   }
+
 
   @override
   void onClose() {

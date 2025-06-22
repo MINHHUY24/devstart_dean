@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final TextEditingController controller;
@@ -48,8 +49,8 @@ class CustomSearchBar extends StatelessWidget {
                 onSubmitted: (_) => onSearch(),
                 cursorColor: Colors.white, // màu con trỏ
                 style: const TextStyle(color: Colors.white),
-                decoration: const InputDecoration(
-                  hintText: 'Search...',
+                decoration: InputDecoration(
+                  hintText: 'search'.tr,
                   hintStyle: TextStyle(color: Colors.white),
                   border: InputBorder.none,
                   enabledBorder: InputBorder.none,

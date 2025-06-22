@@ -24,10 +24,7 @@ class ProfileView extends GetView<ProfileController> {
         width: width, // nếu null thì không cố định width
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Theme
-              .of(context)
-              .inputDecorationTheme
-              .fillColor,
+          color: Theme.of(context).inputDecorationTheme.fillColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -37,11 +34,7 @@ class ProfileView extends GetView<ProfileController> {
             Icon(
               icon,
               size: 25,
-              color: Theme
-                  .of(context)
-                  .textTheme
-                  .labelLarge
-                  ?.color,
+              color: Theme.of(context).textTheme.labelLarge?.color,
             ),
             const SizedBox(height: 8),
             Text(
@@ -49,11 +42,7 @@ class ProfileView extends GetView<ProfileController> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
-                color: Theme
-                    .of(context)
-                    .textTheme
-                    .labelLarge
-                    ?.color,
+                color: Theme.of(context).textTheme.labelLarge?.color,
               ),
             ),
           ],
@@ -71,21 +60,17 @@ class ProfileView extends GetView<ProfileController> {
       appBar: AppBar(
         centerTitle: true,
         toolbarHeight: 45,
-        backgroundColor: Theme
-            .of(context)
-            .appBarTheme
-            .backgroundColor,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         title: Padding(
           padding: const EdgeInsets.only(left: 12, right: 12, bottom: 10),
-          child: Text("Settings", style: TextStyle(
-            color: Theme
-                .of(context)
-                .textTheme
-                .bodyLarge
-                ?.color,
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
-          ),),
+          child: Text(
+            'settings'.tr,
+            style: TextStyle(
+              color: Theme.of(context).textTheme.bodyLarge?.color,
+              fontSize: 22,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
       ),
       body: Padding(
@@ -99,7 +84,6 @@ class ProfileView extends GetView<ProfileController> {
                 highlightColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 onTap: () {
-                  // TODO: chuyển đến trang sửa thông tin cá nhân chẳng hạn
                   print('Tapped profile info');
                 },
                 child: Ink(
@@ -107,10 +91,7 @@ class ProfileView extends GetView<ProfileController> {
                   width: double.infinity,
                   padding: const EdgeInsets.only(left: 15, right: 20),
                   decoration: BoxDecoration(
-                    color: Theme
-                        .of(context)
-                        .inputDecorationTheme
-                        .fillColor,
+                    color: Theme.of(context).inputDecorationTheme.fillColor,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
@@ -121,49 +102,47 @@ class ProfileView extends GetView<ProfileController> {
                         height: 50,
                         width: 50,
                         child: Obx(
-                              () =>
-                              CircleAvatar(
-                                radius: 50,
-                                backgroundImage:
+                          () => CircleAvatar(
+                            radius: 50,
+                            backgroundImage:
                                 profileController.userAvatar.value.isNotEmpty
                                     ? NetworkImage(
-                                  profileController.userAvatar.value,
-                                )
+                                      profileController.userAvatar.value,
+                                    )
                                     : NetworkImage(
-                                  'https://avatar.iran.liara.run/public/28',
-                                ),
-                              ),
+                                      'https://avatar.iran.liara.run/public/28',
+                                    ),
+                          ),
                         ),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Obx(
-                              () =>
-                              ListTile(
-                                contentPadding: EdgeInsets.zero,
-                                title: Text(
-                                  profileController.userName.value.isNotEmpty
-                                      ? profileController.userName.value
-                                      : 'No name',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                ),
-                                subtitle: Text(
-                                  profileController.userEmail.value.isNotEmpty
-                                      ? profileController.userEmail.value
-                                      : 'No email',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.grey[600],
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                ),
+                          () => ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            title: Text(
+                              profileController.userName.value.isNotEmpty
+                                  ? profileController.userName.value
+                                  : 'No name',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
                               ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                            subtitle: Text(
+                              profileController.userEmail.value.isNotEmpty
+                                  ? profileController.userEmail.value
+                                  : 'No email',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey[600],
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -238,15 +217,13 @@ class ProfileView extends GetView<ProfileController> {
               //     ],
               //   ),
               // ),
-
               const SizedBox(height: 20),
               InkWell(
                 // borderRadius: BorderRadius.circular(12), // để splash bo góc
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 hoverColor: Colors.transparent,
-                onTap: () {
-                },
+                onTap: () {},
                 child: Ink(
                   height: 70,
                   width: double.infinity,
@@ -262,8 +239,8 @@ class ProfileView extends GetView<ProfileController> {
                       Expanded(
                         child: Text(
                           themeController.themeMode.value == ThemeMode.dark
-                              ? "Dark Mode"
-                              : "Light Mode",
+                              ? 'dark_mode'.tr
+                              : 'light_mode'.tr,
                           style: TextStyle(
                             color: Theme.of(context).textTheme.bodyLarge?.color,
                             fontSize: 15,
@@ -328,6 +305,88 @@ class ProfileView extends GetView<ProfileController> {
               ),
 
               const SizedBox(height: 20),
+              InkWell(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                onTap: () {},
+                child: Ink(
+                  height: 70,
+                  width: double.infinity,
+                  padding: const EdgeInsets.only(left: 15, right: 20),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).inputDecorationTheme.fillColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'language'.tr,
+                          style: TextStyle(
+                            color: Theme.of(context).textTheme.bodyLarge?.color,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          final isVietnamese = Get.locale?.languageCode == 'vi';
+                          final newLocale =
+                              isVietnamese
+                                  ? const Locale('en', 'US')
+                                  : const Locale('vi', 'VN');
+                          Get.updateLocale(newLocale);
+                        },
+                        child: Container(
+                          width: 60,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color:
+                                Get.locale?.languageCode == 'en'
+                                    ? Theme.of(context).primaryColor
+                                    : Colors.grey[400],
+                          ),
+                          child: Stack(
+                            children: [
+                              AnimatedAlign(
+                                alignment:
+                                    Get.locale?.languageCode == 'vi'
+                                        ? Alignment.centerLeft
+                                        : Alignment.centerRight,
+                                duration: const Duration(milliseconds: 200),
+                                curve: Curves.easeInOut,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 3,
+                                    bottom: 3,
+                                    left: 5,
+                                    right: 5,
+                                  ),
+                                  child: Container(
+                                    width: 24,
+                                    height: 24,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
 
               InkWell(
                 borderRadius: BorderRadius.circular(12),
@@ -337,29 +396,24 @@ class ProfileView extends GetView<ProfileController> {
                 },
                 child: Ink(
                   height: 45,
-                  width: 150,
+                  width: 160,
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   decoration: BoxDecoration(
-                    color: Theme
-                        .of(context)
-                        .primaryColor,
+                    color: Theme.of(context).primaryColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.logout,
-                        color: Colors.white,
-                      ),
+                      Icon(Icons.logout, color: Colors.white),
                       const SizedBox(width: 10),
                       Text(
-                        'Logout',
+                        'logout'.tr,
                         style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
-                        )
+                        ),
                       ),
                     ],
                   ),

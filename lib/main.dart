@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'app/language/my_translations.dart';
 import 'app/modules/home/controllers/home_controller.dart';
 import 'app/routes/app_pages.dart';
 import 'app/services/notification_service.dart';
@@ -47,6 +48,10 @@ class MyApp extends StatelessWidget {
         themeMode: themeController.themeMode.value,
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
+
+        translations: MyTranslations(),
+        locale: const Locale('vi', 'VN'),
+        fallbackLocale: const Locale('en', 'US'),
       ),
     );
   }
