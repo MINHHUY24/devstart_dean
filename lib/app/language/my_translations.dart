@@ -19,6 +19,9 @@ class MyTranslations extends Translations {
       'welcome': 'Chào mừng bạn đến với DevStart!',
       'ideas_to_action': 'Từ ý tưởng đến hành động. Từ thử thách đến kỹ năng',
       'congratulation': 'Chúc mừng bạn!',
+      'no': 'Không',
+      'yes': 'Đồng ý',
+      'text': 'Bạn có muốn dừng lại không?'
     },
     'en_US': {
       'settings': 'Settings',
@@ -36,6 +39,9 @@ class MyTranslations extends Translations {
       'welcome': 'Welcome to DevStart!',
       'ideas_to_action': 'From ideas to action. From challenges to skills',
       'congratulation': 'Congratulations!',
+      'no': 'No',
+      'yes': 'Yes',
+      'text': 'Do you want to stop?'
     }
   };
 }

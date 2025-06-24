@@ -96,13 +96,9 @@ class PlayGameView extends GetView<PlayGameController> {
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                const Text(
-                                  'Exit',
-                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-                                ),
                                 const SizedBox(height: 12),
-                                const Text(
-                                  'Are you sure you want to close?',
+                                Text(
+                                  'text'.tr,
                                   style: TextStyle(color: Color(0xFF9E9E9E), fontSize: 17),
                                   textAlign: TextAlign.center,
                                 ),
@@ -118,8 +114,8 @@ class PlayGameView extends GetView<PlayGameController> {
                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                                         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                                       ),
-                                      child: const Text(
-                                        'Cancel',
+                                      child: Text(
+                                        'no'.tr,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                     ),
@@ -136,7 +132,7 @@ class PlayGameView extends GetView<PlayGameController> {
                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
                                       ),
-                                      child: const Text('Yes', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                                      child: Text('yes'.tr, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
                                     ),
                                   ],
                                 )
@@ -216,32 +212,32 @@ class PlayGameView extends GetView<PlayGameController> {
                       const SizedBox(height: 20),
 
                       // Nếu là câu hỏi tự điền
-                      if (currentQuestion.type == 'fill') ...[
-                        TextField(
-                          controller: controller.textController,
-                          style: const TextStyle(color: Colors.white),
-                          decoration: InputDecoration(
-                            hintText: 'Nhập câu trả lời...',
-                            hintStyle: const TextStyle(color: Colors.grey),
-                            filled: true,
-                            fillColor: const Color(0xFF374156),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                          textInputAction: TextInputAction.done,
-                          onSubmitted: (value) {
-                            final answer = value.trim();
-                            if (answer.isEmpty) return;
-                            controller.selectAnswer(answer);
-                            // Không chuyển câu, không clear text
-                          },
-                        ),
-                      ]
-
-
-                      // Nếu là câu hỏi trắc nghiệm
-                      else
+                      // if (currentQuestion.type == 'fill_in_blank') ...[
+                      //   TextField(
+                      //     controller: controller.textController,
+                      //     style: const TextStyle(color: Colors.white),
+                      //     decoration: InputDecoration(
+                      //       hintText: 'Nhập câu trả lời...',
+                      //       hintStyle: const TextStyle(color: Colors.grey),
+                      //       filled: true,
+                      //       fillColor: const Color(0xFF374156),
+                      //       border: OutlineInputBorder(
+                      //         borderRadius: BorderRadius.circular(8),
+                      //       ),
+                      //     ),
+                      //     textInputAction: TextInputAction.done,
+                      //     onSubmitted: (value) {
+                      //       final answer = value.trim();
+                      //       if (answer.isEmpty) return;
+                      //       controller.selectAnswer(answer);
+                      //       // Không chuyển câu, không clear text
+                      //     },
+                      //   ),
+                      // ]
+                      //
+                      //
+                      // // Nếu là câu hỏi trắc nghiệm
+                      // else
                         ...List.generate(
                           currentQuestion.answerBlocks.length,
                               (index) {
@@ -259,7 +255,6 @@ class PlayGameView extends GetView<PlayGameController> {
                               final isJustAnswered = controller.justAnsweredCurrentQuestion.value;
 
                               if (isRevisiting) {
-                                // Chỉ tô màu nếu người dùng vừa trả lời lại
                                 if (answerStatus == true) {
                                   buttonColor = Colors.green;
                                 } else if (answerStatus == false && isJustAnswered) {
@@ -306,73 +301,6 @@ class PlayGameView extends GetView<PlayGameController> {
                   ),
                 ),
               ),
-
-              // Nút điều hướng
-              // Padding(
-              //   padding: const EdgeInsets.only(bottom: 60),
-              //   child: SizedBox(
-              //     height: 45,
-              //     child: Row(
-              //       children: [
-              //         // Back
-              //         Expanded(
-              //           child: InkWell(
-              //             onTap: controller.currentIndex.value == 0
-              //                 ? null
-              //                 : controller.previousQuestion,
-              //
-              //             borderRadius: BorderRadius.circular(5),
-              //             child: Container(
-              //               decoration: BoxDecoration(
-              //                 color: controller.currentIndex.value == 0
-              //                     ? Colors.grey
-              //                     : Theme.of(context).primaryColor,
-              //                 borderRadius: BorderRadius.circular(5),
-              //               ),
-              //               child: const Center(
-              //                 child: Text(
-              //                   'Back',
-              //                   style: TextStyle(
-              //                     color: Colors.white,
-              //                     fontWeight: FontWeight.w700,
-              //                     fontSize: 16,
-              //                   ),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //         const SizedBox(width: 120),
-              //         // Next
-              //         Expanded(
-              //           child: InkWell(
-              //             onTap: controller.selectedAnswers.containsKey(controller.currentIndex.value)
-              //                 ? controller.nextQuestion
-              //                 : null,
-              //
-              //             borderRadius: BorderRadius.circular(5),
-              //             child: Container(
-              //               decoration: BoxDecoration(
-              //                 color: Theme.of(context).primaryColor,
-              //                 borderRadius: BorderRadius.circular(5),
-              //               ),
-              //               child: const Center(
-              //                 child: Text(
-              //                   'Next',
-              //                   style: TextStyle(
-              //                     color: Colors.white,
-              //                     fontWeight: FontWeight.w700,
-              //                     fontSize: 16,
-              //                   ),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         );
