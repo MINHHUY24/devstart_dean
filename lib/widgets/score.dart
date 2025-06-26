@@ -65,11 +65,11 @@ class _ScoreState extends State<Score> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "congratulations".tr,
+                "congratulation".tr,
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Theme.of(context).textTheme.bodyLarge?.color,
                 ),
               ),
               const SizedBox(height: 30),
@@ -85,10 +85,10 @@ class _ScoreState extends State<Score> {
               const SizedBox(height: 30),
               Text(
                 "${widget.score.toStringAsFixed(1)} / 10.0 points",
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Theme.of(context).textTheme.bodyLarge?.color,
                 ),
               ),
               const SizedBox(height: 30),

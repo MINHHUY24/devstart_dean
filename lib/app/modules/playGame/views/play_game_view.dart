@@ -99,7 +99,7 @@ class PlayGameView extends GetView<PlayGameController> {
                                 const SizedBox(height: 12),
                                 Text(
                                   'text'.tr,
-                                  style: TextStyle(color: Color(0xFF9E9E9E), fontSize: 17),
+                                  style: TextStyle(color: Colors.white, fontSize: 17),
                                   textAlign: TextAlign.center,
                                 ),
                                 const SizedBox(height: 20),
@@ -203,10 +203,10 @@ class PlayGameView extends GetView<PlayGameController> {
 
                       Text(
                         currentQuestion.question,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w500,
-                          color: Colors.white,
+                          color: Theme.of(context).textTheme.bodyLarge?.color,
                         ),
                       ),
                       const SizedBox(height: 20),
