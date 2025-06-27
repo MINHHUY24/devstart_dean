@@ -132,14 +132,24 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
     const int maxLevel = 10;
 
     try {
-      if (newLevel <= unlockedLevel.value) {
+      // Lấy unlocked_level hiện tại từ Supabase
+      final current = await Supabase.instance.client
+          .from('user_progress')
+          .select('unlocked_level')
+          .eq('user_id', userId)
+          .eq('course_name', courseName)
+          .maybeSingle();
+
+      final currentLevel = (current?['unlocked_level'] ?? 1) as int;
+
+      if (newLevel <= currentLevel) {
         print('Level $newLevel đã được mở hoặc nhỏ hơn. Không cần cập nhật.');
         return;
       }
 
       final newProgress = ((newLevel - 1) / maxLevel * 100).round();
 
-      final response = await Supabase.instance.client
+      await Supabase.instance.client
           .from('user_progress')
           .update({
         'unlocked_level': newLevel,
@@ -148,16 +158,14 @@ class LevelController extends GetxController with StateMixin<List<QuestionsModel
           .eq('user_id', userId)
           .eq('course_name', courseName);
 
-      if (response != null) {
-        unlockedLevel.value = newLevel;
-        print('Cập nhật unlocked_level = $newLevel, progress = $newProgress');
-      } else {
-        print('Cập nhật không thành công');
-      }
+      unlockedLevel.value = newLevel;
+
+      print('Đã mở khóa level $newLevel cho $courseName, progress = $newProgress%');
     } catch (e) {
       print('Lỗi khi cập nhật unlocked level: $e');
     }
   }
+
 
   Future<void> onLevelCompleted() async {
     final userId = Supabase.instance.client.auth.currentUser?.id;

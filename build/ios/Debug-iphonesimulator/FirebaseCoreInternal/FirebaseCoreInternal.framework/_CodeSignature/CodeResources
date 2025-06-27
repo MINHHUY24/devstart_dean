@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		4rn5i83KvHroTDwUNHanGZ/pnZA=
+		7KUk+hozD07XXsutPyvBjIaEX6E=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		A+vs994xFLqJ/lIAfjyjmtuFBt0=
+		rbiM4aJp7o/qTqS8signSE+Dv5o=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		9rtb7wRgxMRZCL2GtN6nPKZxwyI=
+		MT8pqpQq8kGgSh09GIHJ5Q523E8=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		nruBBv9T+ZHDP3wlrX14Aw/AAVg=
+		AIoDvrd4zZ6zVeWjuoC+W92A33Q=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -95,14 +95,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uycxMUUCuWvygg4oJWYv2U8wJZ2LhLBmJyTGytrYYR8=
+			UxkG3HOoqxn9HzkNPXZ6EfpufI2BeavIQx0HkR5ofmY=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Jj6PGlK/4bPBEfFt0CpxAMMyX4kymDzF/kOYDh1t9TI=
+			3+RDeqm/r/gNsaHv+JQH0h5BWYP2jtfugokX0BCB4xg=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -123,7 +123,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Mkzal+5fz/71cBRGzhSJXWuiFB9u26GQrf/675QG0+A=
+			mruITV//aXzLIjCEPESzrxYj8BlWMpOhjlwPTQFAVbw=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -144,7 +144,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			d1RlesqxaBgLDluDh4vO3KTrVRGP+Nvh8v98LEAeJWs=
+			cBmyE4ePqdlo83FOcdD5FNMehMFUP3i46NEOG5r8w7g=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
